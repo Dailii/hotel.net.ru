@@ -1,0 +1,5 @@
+.c-back {background-color:#540403  !important} /* Цвет фона базовых элементов */
+body, .c-body {background:#f7eee1 !important} /* Цвет фона сайта */
+#top-menu img {width:137px;}
+
+#top-menu-list a {font-size:16px; margin-left:25px;}
