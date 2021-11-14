@@ -1,0 +1,419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Номера</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="text/javascript" src="../code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+
+<link rel="stylesheet" href="css/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<script src="js/ui/1.11.1/jquery-ui.js"></script>
+
+<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>-->
+
+<script type="text/javascript" src="js/jquery.ui.datepicker-ru.js"></script>
+
+<script type="text/javascript" src="js/scriptc66d.js?ver=12"></script>
+
+<link href="css/stylec66d.css?ver=12" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/font/room/stylesheet.css">
+
+<link rel="icon" href="h20/img/favicon/ico.html" type="image/x-icon">
+<link rel="shortcut icon" href="h20/img/favicon/ico.html" type="image/x-icon">
+
+<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
+<link rel="stylesheet" href="css/font/hotel/stylesheet.css">
+
+<link rel="stylesheet" href="h20/css/stylec66d.css?ver=12">
+
+<link href='https://fonts.googleapis.com/css?family=Lobster&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" href="css/adaptive2c66d.css?ver=12">
+<script type="text/javascript" src="js/adaptivec66d.js?ver=12"></script>
+
+<link href="css/swiper.min.css" rel="stylesheet" type="text/css" />
+<script src="js/swiper.min.js"></script>
+
+
+<script>
+	$(function(){
+            $('.rooms-room-info-price').on('mouseenter', function(e){
+                var data = $(this).parent().data('price');
+               
+                var y = e.pageY+20;
+                
+                var line_h = '<tr>';
+                $.each(data.line_h, function(j) {
+                    line_h += '<td>'+data.line_h[j]+'</td>';
+                });
+                line_h += '</tr>';
+                
+                var line = '';
+                var sum_days = 0;
+                $.each(data.date, function(j) {
+                    line += '<tr><td>'+data.date[j]+'</td><td>'+data.days[j]+'</td><td>'+data.cost[j]+'</td><td>'+data.add_x[j]+'</td></tr>';
+                    sum_days += 0;
+                });
+               
+                var content = '<table cellpadding="5" cellspasing="0">'+line_h+line+'</table>';
+       
+                $('#price-room-info').show().css('top', y).html(content);
+               
+                console.log(data);
+            }).on('mouseleave', function(){
+                $('#price-room-info').hide(); 
+            });
+		
+	});
+</script>
+</head>
+<body  data-login="" >
+<div id="TB_overlay"></div>
+<div id="price-room-info-frame"><div id="price-room-info"></div></div>
+
+<div id="black-sc"></div>
+
+<div class="c-back" id="mob-popup-menu">
+    <div id="mob1">
+                <a  href="index.html">Главная</a>
+            <a  href="rooms.html">Номера</a>
+            <a  href="gallery.html">Галерея</a><a  href="actions.html">Акции</a>            <a  href="book.html">Забронировать</a>
+            <a  href="review.html">Отзывы</a>
+            <a  href="articles.html">Статьи</a>
+            <a  href="contact.html">Контакты</a>
+    </div>
+</div>
+
+<div class="c-back" id="top">
+    <div class="center">
+        Гостиница «Равенна»  &nbsp; +7 (978) 843 12 73<!--    <div class="fr popup-triangle ttu" id="office-enter">вход в кабинет<span></span></div>
+    <div class="fr popup-triangle mr30 ttu" id="top-callback-do">Заказать обратный звонок<span></span></div>
+    <div class="fr popup-triangle popup-callback mr30" id="top-callback"><i></i>+7 978 776 91 67 Россия<span></span></div>
+    <div class="fr popup-triangle mr30" id="office-enter">Гривны<span></span></div>-->
+    </div>
+</div>
+<div id="mob-top">
+<div class="center">
+    <div id="top-menu">
+        <span style="position:absolute; left:0px; bottom:-12px; text-transform:uppercase;">официальный сайт</span    	<a href="index.html">
+            <img class="fl" alt="Номера" title="Номера" src="h20/img/logo.png" />
+        </a>
+        <div  data-mobile="" class="c-text mob-hide" id="top-menu-list">
+            <a  href="index.html">Главная</a>
+            <a  href="rooms.html">Номера</a>
+            <a  href="gallery.html">Галерея</a><a  href="actions.html">Акции</a>            <a  href="book.html">Забронировать</a>
+            <a  href="review.html">Отзывы</a>
+            <a  href="articles.html">Статьи</a>
+            <a  href="contact.html">Контакты</a>
+        </div>
+        
+        <span class="c-back" id="mob-top-menu-btn"><span class="menu-icon-toggle"><span></span></span></span>
+        <br class="cb" />
+    </div>
+</div>
+</div><div class="mb20" id="bread-crumbs">
+<div class="center">
+	<a href="index.html">главная</a> / номерной фонд
+</div>
+</div>
+
+<div class="center">
+        
+    <div class="fl" id="rooms-left">
+    	
+<script>
+    $(function(){ $('#left-search-head span').css('border-top-color', $('.c-back').eq(0).css('background-color'));  }); 
+</script>
+
+<div id="left-search">
+    <div class="c-back" id="left-search-head">
+        <div>поиск<br />свободных номеров</div>
+        <span style=""></span>
+    </div>
+    <div id="left-search-input">
+        заезд
+        <input class="date inp-date-s" type="text" placeholder="выберите" value="" data-callback="recalc" />
+        выезд
+        <input class="date inp-date-e" type="text" placeholder="выберите" value="" data-callback="recalc" />
+        <div class="select-list-frame">
+                <div id="left-search-people">
+                    <div class="fl">
+                            взрослые
+                            
+                            <div style="width:39px;" data-cook="adults" data-callback="recalc" class="select-list " data-val="2">
+                                    <span class="select-list-view">2</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div><div data-val="5">5 </div><div data-val="6">6 </div>
+                                    </div>
+                            </div>
+                                                </div>
+                    <div class="fr">
+                            дети
+                            
+                            <div style="width:39px;" data-cook="children" data-callback="recalc, child_view" class="select-list " data-val="0" >
+                                    <span class="select-list-view">0</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="0">0 </div><div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div>
+                                    </div>
+                            </div>
+                                                </div>
+                    <br class="cb" />
+                </div>
+
+                <div class="mt10" id="left-search-child">
+                    <span class="childs-tip">возраст детей</span>
+                        <div class="childs-tip">
+                                
+                            <div style="width:0px;" data-cook="ch1" data-callback="recalc" class="select-list sel-child fl" data-val="8" data-n="1">
+                                    <span class="select-list-view">8</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div><div data-val="5">5 </div><div data-val="6">6 </div><div data-val="7">7 </div><div data-val="8">8 </div><div data-val="9">9 </div><div data-val="10">10 </div><div data-val="11">11 </div><div data-val="12">12 </div><div data-val="13">13 </div><div data-val="14">14 </div><div data-val="15">15 </div><div data-val="16">16 </div><div data-val="17">17 </div><div data-val="18">18 </div>
+                                    </div>
+                            </div>
+                            
+                            <div style="width:0px;" data-cook="ch2" data-callback="recalc" class="select-list sel-child fl" data-val="8" data-n="2">
+                                    <span class="select-list-view">8</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div><div data-val="5">5 </div><div data-val="6">6 </div><div data-val="7">7 </div><div data-val="8">8 </div><div data-val="9">9 </div><div data-val="10">10 </div><div data-val="11">11 </div><div data-val="12">12 </div><div data-val="13">13 </div><div data-val="14">14 </div><div data-val="15">15 </div><div data-val="16">16 </div><div data-val="17">17 </div><div data-val="18">18 </div>
+                                    </div>
+                            </div>
+                            
+                            <div style="width:0px;" data-cook="ch3" data-callback="recalc" class="select-list sel-child fl" data-val="8" data-n="3">
+                                    <span class="select-list-view">8</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div><div data-val="5">5 </div><div data-val="6">6 </div><div data-val="7">7 </div><div data-val="8">8 </div><div data-val="9">9 </div><div data-val="10">10 </div><div data-val="11">11 </div><div data-val="12">12 </div><div data-val="13">13 </div><div data-val="14">14 </div><div data-val="15">15 </div><div data-val="16">16 </div><div data-val="17">17 </div><div data-val="18">18 </div>
+                                    </div>
+                            </div>
+                            
+                            <div style="width:0px;" data-cook="ch4" data-callback="recalc" class="select-list sel-child fl mr0" data-val="8" data-n="4">
+                                    <span class="select-list-view">8</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div><div data-val="5">5 </div><div data-val="6">6 </div><div data-val="7">7 </div><div data-val="8">8 </div><div data-val="9">9 </div><div data-val="10">10 </div><div data-val="11">11 </div><div data-val="12">12 </div><div data-val="13">13 </div><div data-val="14">14 </div><div data-val="15">15 </div><div data-val="16">16 </div><div data-val="17">17 </div><div data-val="18">18 </div>
+                                    </div>
+                            </div>
+                                                            <br class="cb" />
+                        </div>
+                </div>
+        </div>
+        <a href="search.html" class="ac-btn" id="left-search-send">Найти</a>    </div>
+</div>    </div>
+    
+    <div class="fr" id="rooms-right">
+    	
+                            <div data-price='null' data-id="4" class="rooms-room calc-room">
+                                    <a href="roomdcfd.html?id=4" class="fl rooms-room-img"><img src="h20/img/room/middle_Ujd0hz.jpg" /></a>
+                                    <div class="fl rooms-room-info">
+                                            <a href="roomdcfd.html?id=4" class="rooms-room-info-name">Эконом </a>
+                                            <div class="rooms-room-info-char">
+                                                    <div><span>Основных мест:</span> 2 &nbsp; &nbsp; <span>Доп. мест:</span> 0</div>
+                                                    <div><span>Комнат:</span> 1 <i>15М<sup>2</sup></i></div>
+                                                    <div><span>Кровать:</span> Двуспальная кровать</div>
+                                                    <div><span>В номере:</span> телевизор, санузел, кровать, фен, кондиционер, холодильник, Wi-Fi</div> 
+                                            </div>
+                                    </div>
+                                    <div class="fl rooms-room-info-price">
+                                            <i>за номер в сутки</i>
+                                            <div class="rooms-room-cost">
+                                                    <span class="calc-sale-style calc-sale calc-sale-day hide">2000<b></b></span> 
+                                                    <span class="calc-cost-day load-cost"> 2000 руб</span>
+                                            </div>
+                                    </div>
+                                    <div class="fl rooms-room-info-date">
+                                            <span class="calc-room-places load-cost">за 2 чел.</span>, 
+                                            <span class="calc-days-text load-cost">за 7 ночей</span>
+                                            <br>
+                                            <span class="calc-date-text load-cost">с 08 нояб по 15 нояб 2021</span>
+                                    </div>
+                                    <div class="fl rooms-room-info-price2">
+                                            <i class="calc-sale calc-sale-all hide">14000</i> 
+                                            <span class="calc-cost-all load-cost">14000 руб</span>
+                                            <a href="bookdcfd.html?id=4" class="rooms-room-info-link">Бронировать</a>
+                                    </div>
+
+                                    <br class="cl" />
+                            </div>
+                            
+                            <div data-price='null' data-id="1" class="rooms-room calc-room">
+                                    <a href="room681a.html?id=1" class="fl rooms-room-img"><img src="h20/img/room/middle_21OPX.jpg" /></a>
+                                    <div class="fl rooms-room-info">
+                                            <a href="room681a.html?id=1" class="rooms-room-info-name">Стандарт  с общей кроватью</a>
+                                            <div class="rooms-room-info-char">
+                                                    <div><span>Основных мест:</span> 2 &nbsp; &nbsp; <span>Доп. мест:</span> 1</div>
+                                                    <div><span>Комнат:</span> 1 <i>22М<sup>2</sup></i></div>
+                                                    <div><span>Кровать:</span> 1 двухспальная или 2 раздвижные</div>
+                                                    <div><span>В номере:</span> телевизор, санузел, кровать, фен, вид, кондиционер, холодильник, Wi-Fi</div> 
+                                            </div>
+                                    </div>
+                                    <div class="fl rooms-room-info-price">
+                                            <i>за номер в сутки</i>
+                                            <div class="rooms-room-cost">
+                                                    <span class="calc-sale-style calc-sale calc-sale-day hide">2500<b></b></span> 
+                                                    <span class="calc-cost-day load-cost"> 2500 руб</span>
+                                            </div>
+                                    </div>
+                                    <div class="fl rooms-room-info-date">
+                                            <span class="calc-room-places load-cost">за 2 чел.</span>, 
+                                            <span class="calc-days-text load-cost">за 7 ночей</span>
+                                            <br>
+                                            <span class="calc-date-text load-cost">с 08 нояб по 15 нояб 2021</span>
+                                    </div>
+                                    <div class="fl rooms-room-info-price2">
+                                            <i class="calc-sale calc-sale-all hide">17500</i> 
+                                            <span class="calc-cost-all load-cost">17500 руб</span>
+                                            <a href="book681a.html?id=1" class="rooms-room-info-link">Бронировать</a>
+                                    </div>
+
+                                    <br class="cl" />
+                            </div>
+                            
+                            <div data-price='null' data-id="3" class="rooms-room calc-room">
+                                    <a href="roomd708.html?id=3" class="fl rooms-room-img"><img src="h20/img/room/middle_N9ehnY.jpg" /></a>
+                                    <div class="fl rooms-room-info">
+                                            <a href="roomd708.html?id=3" class="rooms-room-info-name">Комфорт с общей кроватью </a>
+                                            <div class="rooms-room-info-char">
+                                                    <div><span>Основных мест:</span> 2 &nbsp; &nbsp; <span>Доп. мест:</span> 1</div>
+                                                    <div><span>Комнат:</span> 1 <i>25М<sup>2</sup></i></div>
+                                                    <div><span>Кровать:</span> Двуспальная + раскладное кресло. </div>
+                                                    <div><span>В номере:</span> телевизор, балкон, санузел, кровать, фен, вид, кондиционер, холодильник, Wi-Fi</div> 
+                                            </div>
+                                    </div>
+                                    <div class="fl rooms-room-info-price">
+                                            <i>за номер в сутки</i>
+                                            <div class="rooms-room-cost">
+                                                    <span class="calc-sale-style calc-sale calc-sale-day hide">2700<b></b></span> 
+                                                    <span class="calc-cost-day load-cost"> 2700 руб</span>
+                                            </div>
+                                    </div>
+                                    <div class="fl rooms-room-info-date">
+                                            <span class="calc-room-places load-cost">за 2 чел.</span>, 
+                                            <span class="calc-days-text load-cost">за 7 ночей</span>
+                                            <br>
+                                            <span class="calc-date-text load-cost">с 08 нояб по 15 нояб 2021</span>
+                                    </div>
+                                    <div class="fl rooms-room-info-price2">
+                                            <i class="calc-sale calc-sale-all hide">18900</i> 
+                                            <span class="calc-cost-all load-cost">18900 руб</span>
+                                            <a href="bookd708.html?id=3" class="rooms-room-info-link">Бронировать</a>
+                                    </div>
+
+                                    <br class="cl" />
+                            </div>
+                            
+                            <div data-price='null' data-id="2" class="rooms-room calc-room">
+                                    <a href="room0b30.html?id=2" class="fl rooms-room-img"><img src="h20/img/room/middle_DN7H1.jpg" /></a>
+                                    <div class="fl rooms-room-info">
+                                            <a href="room0b30.html?id=2" class="rooms-room-info-name">Двухкомнатный Люкс</a>
+                                            <div class="rooms-room-info-char">
+                                                    <div><span>Основных мест:</span> 4 &nbsp; &nbsp; <span>Доп. мест:</span> 1</div>
+                                                    <div><span>Комнат:</span> 2 <i>30М<sup>2</sup></i></div>
+                                                    <div><span>Кровать:</span> 1 круглая, 1 диван -трансформер</div>
+                                                    <div><span>В номере:</span> телевизор, балкон, санузел, кровать, фен, вид, кондиционер, холодильник, Wi-Fi</div> 
+                                            </div>
+                                    </div>
+                                    <div class="fl rooms-room-info-price">
+                                            <i>за номер в сутки</i>
+                                            <div class="rooms-room-cost">
+                                                    <span class="calc-sale-style calc-sale calc-sale-day hide">3000<b></b></span> 
+                                                    <span class="calc-cost-day load-cost"> 3000 руб</span>
+                                            </div>
+                                    </div>
+                                    <div class="fl rooms-room-info-date">
+                                            <span class="calc-room-places load-cost">за 2 чел.</span>, 
+                                            <span class="calc-days-text load-cost">за 7 ночей</span>
+                                            <br>
+                                            <span class="calc-date-text load-cost">с 08 нояб по 15 нояб 2021</span>
+                                    </div>
+                                    <div class="fl rooms-room-info-price2">
+                                            <i class="calc-sale calc-sale-all hide">21000</i> 
+                                            <span class="calc-cost-all load-cost">21000 руб</span>
+                                            <a href="book0b30.html?id=2" class="rooms-room-info-link">Бронировать</a>
+                                    </div>
+
+                                    <br class="cl" />
+                            </div>
+                                    <div id="page-text"><p><a href="https://www.vipcargo.biz.ua/">vipcargo.biz.ua</a></p>
+</div>
+    </div>
+    
+    <br class="cb" />
+</div>
+
+<div class="c-back" id="footer">
+	<div class="center">
+    
+        <div class="fl" id="footer-company">
+            298500,<br />Россия, АР Крым, Алушта,<br />ул. Иванова, 1<br>
+            тел.: +7 (978) 843 12 73<br>
+            e-mail: ravennahotels@gmail.com            <br /><br />
+            
+            &copy; 2021 <br />
+            Сайт + ПО для отеля
+        </div>
+        
+        <div class="fl footer-list" >
+            <div>Номерной фонд</div>
+                
+            <a href="roomdcfd.html?id=4">Эконом </a><a href="room681a.html?id=1">Стандарт  с общей кроватью</a><a href="roomd708.html?id=3">Комфорт с общей кроватью </a><a href="room0b30.html?id=2">Двухкомнатный Люкс</a>        </div>
+        
+        <div class="fl footer-list" >
+        	<div>Последние статьи</div>
+            <a href="article681a.html?id=1"></a><a href="article0b30.html?id=2"></a><a href="articled708.html?id=3"></a><a href="articledcfd.html?id=4"></a><a href="articled61c.html?id=5"></a><a href="article3a9f.html?id=6"></a><a href="article8803.html?id=7"></a>        </div>
+        
+         <br class="cl" />
+
+    </div>
+</div>
+<div id="under">
+    <a target="_blank" href="https://wintega.com/turkey/mediterranean-region-turkey/antalya">Отели Антальи</a> |
+    <a href="index.html">Главная</a> |
+    <a href="rooms.html">Номера</a> |
+    <a href="book.html">Забронировать</a> |
+    <a href="review.html">Отзывы</a> |
+    <a href="contact.html">Контакты</a> |
+    <a href="oferta.html">Оферта и политика конфиденциальности</a>
+</div>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter36677925 = new Ya.Metrika({
+                    id:36677925,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "../mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/36677925" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>

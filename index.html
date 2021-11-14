@@ -1,0 +1,1027 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Добро пожаловать в отель Равенн! Добро пожаловать на Южный берег Крыма!
+Отдых в Алуште в отеле Равенн – это приятная возможность провести время у моря всей семье, в компании друзей и даже в одиночку, насладиться красотами крымских пейзажей, оздоровиться, наполниться силами и энергией!!!!!
+От отеля очень удобная дорожная развязка! Вы можете попасть в любую точку Крыма за считанные часы , будь то Симферополь , Севастополь, Судак…, а дорога до Ялты занимает всего 25 минут. 
+Отель Равенн подходит тем, кто хочет спокойно отдохнуть на море, так как расположен в тихом и живописном районе города в ">
+<meta name="keywords" content="Добро пожаловать  в отель Равенн">
+<title>Официальный сайт </title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="text/javascript" src="../code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+
+<link rel="stylesheet" href="css/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<script src="js/ui/1.11.1/jquery-ui.js"></script>
+
+<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>-->
+
+<script type="text/javascript" src="js/jquery.ui.datepicker-ru.js"></script>
+
+<script type="text/javascript" src="js/scriptc66d.js?ver=12"></script>
+
+<link href="css/stylec66d.css?ver=12" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/font/room/stylesheet.css">
+
+<link rel="icon" href="h20/img/favicon/ico.html" type="image/x-icon">
+<link rel="shortcut icon" href="h20/img/favicon/ico.html" type="image/x-icon">
+
+<link rel="stylesheet" href="css/font/hotel/stylesheet.css">
+
+<link rel="stylesheet" href="h20/css/stylec66d.css?ver=12">
+
+<link href='https://fonts.googleapis.com/css?family=Lobster&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" href="css/adaptive2c66d.css?ver=12">
+<script type="text/javascript" src="js/adaptivec66d.js?ver=12"></script>
+
+<link href="css/swiper.min.css" rel="stylesheet" type="text/css" />
+<script src="js/swiper.min.js"></script>
+
+
+<script type="text/javascript">
+ymaps.ready(init);
+
+function init () {
+    var h = $('#main-our-plus').height()+20;
+    $('#YMapsID').height(h);
+
+    
+    var myMap = new ymaps.Map("YMapsID", {
+            center: [44.68498,34.406778],
+            zoom: 16,
+			behaviors: ['default'],
+			controls: ['zoomControl', 'typeSelector',  'fullscreenControl']
+
+        }),
+
+
+        myPlacemark = new ymaps.Placemark([44.68498,34.406778], {
+            balloonContentBody: ' <div align="center">Гостиница «Равенн»</div>',
+            //balloonContentFooter: '<div style="font-size:12px;" align="center">  <br >  </div>',
+           // hintContent: "Хинт метки"
+        	}, {
+				preset: 'islands#icon',
+            	iconColor: '#774d25'
+		});
+		
+	myMap.behaviors.disable("scrollZoom");
+
+    myMap.geoObjects.add(myPlacemark);
+
+  
+}
+</script>
+
+
+<script>
+    $(function(){
+        $('.char-tip').mouseenter(function(){
+            var name = $(this).data('name');
+            var val = $(this).data('val');
+            
+            $(this).find('.char-hotel-text').append('<div><b>'+name+':</b>'+val+'</div>');
+        }).mouseleave(function(){
+                $(this).find('.char-hotel-text div').remove();
+        });
+        
+        
+        $('#main-photo-left, .main-rooms-l, #main-gallery-l').mouseenter(function(){
+                $(this).find('span').css('background-position', '-300px 0px');
+        }).mouseleave(function(){
+                $(this).find('span').css('background-position', '-100px 0px');
+        });
+
+        $('#main-photo-right, .main-rooms-r, #main-gallery-r').mouseenter(function(){
+            $(this).find('span').css('background-position', '-400px 0px');
+        }).mouseleave(function(){
+            $(this).find('span').css('background-position', '-200px 0px');
+        });
+
+
+        $('#main-gallery-btns, #main-photo-btns').on('mouseenter', 'span', function(){
+            $(this).css('background-position', '-500px 0px');
+        }).on('mouseleave', 'span', function(){
+            if($(this).attr('ac') != 1) $(this).css('background-position', '-544px 0px');
+        });
+
+        $('#main-gallery-menu div').click(function(){
+            var w = parseInt($('.center').eq(0).width());
+    
+            $('#main-gallery-menu div').removeClass('ac-menu');
+           $(this).addClass('ac-menu');
+           $('#main-gallery-menu').data('n', 0);
+    
+            if(w < 700){
+                mob_hot_gallery(this);
+            }else{
+               var images = $(this).data('img');
+               var img = '<img src="/h20/img/hotel/'+images[0]+'" />';
+               $('#main-gallery-img').html(img);
+    
+               var amount = images.length;
+               var btns = '';
+    
+               for (i=0; i < amount; i++) btns += '<span></span>';
+               $('#main-gallery-btns').html(btns);
+               set_btn_img(0);
+            }
+        });
+        
+        $('#main-gallery-r').click(function(){
+            var n = $('#main-gallery-menu').data('n');
+            var images = $('#main-gallery-menu .ac-menu').data('img');
+            var amount = images.length;
+            n++;
+            if(n >= amount) n = 0;
+            $('#main-gallery-menu').data('n', n);
+            
+            set_btn_img(n);
+
+            var img = '<img src="/h20/img/hotel/'+images[n]+'" />';
+            $('#main-gallery-img').html(img);
+        });
+        
+        $('#main-gallery-l').click(function(){
+            var n = $('#main-gallery-menu').data('n');
+            var images = $('#main-gallery-menu .ac-menu').data('img');
+            var amount = images.length;
+            n--;
+            if(n < 0) n = amount-1;
+            $('#main-gallery-menu').data('n', n);
+            
+            set_btn_img(n);
+
+            var img = '<img src="/h20/img/hotel/'+images[n]+'" />';
+            $('#main-gallery-img').html(img);
+        });
+        
+        
+        
+        $( "#main-review-btn span" ).hover(function() {
+                $(this).css('background', '#fdb714');
+        }, function() {
+                var step = $(this).data('n');
+                var cur_step = $('#main-review-btn').data('step');
+                if(cur_step != step){
+                        $(this).css('background', '#f1f1f1');
+                }
+        });
+
+        $('#main-review-btn span').on('click',function(){
+                var step = $(this).data('n');
+
+                $('.review-text').hide().css('opacity','0.1');
+                $('.review-text[data-n='+step+']').show().animate({opacity: 1},250);
+
+                $('#main-review-btn').data('step', step);
+
+                $('#main-review-btn span').css('background', '#f1f1f1');
+                $('#main-review-btn span[data-n='+step+']').css('background', '#fdb714');
+        });
+        
+        $('#main-photo-right').click(function(){
+            var n = $('#main-photo-list').data('n');
+            set_btn_img_head(n, 1);     
+        });
+        $('#main-photo-left').click(function(){
+            var n = $('#main-photo-list').data('n');
+            set_btn_img_head(n, 0);     
+        });
+        $('#main-photo-btns span').click(function(){
+            var n = $(this).data('n');
+            set_btn_img_head(n, 2)
+        });
+        
+        
+        
+        $('.main-rooms-l').click(function(){
+            var slide_w = parseInt($('#main-rooms-over').width())+20;
+            var step = parseInt($('#main-rooms-over').data('step'))-1;
+            var steps = $('#main-rooms-over').data('steps');
+
+            if(step == -1) step = (steps-1);
+            $('#main-rooms-over').data('step', step);
+
+            var slide = step*slide_w;
+            $('#main-rooms-over').stop().animate({scrollLeft: slide}, 750);
+        });
+        
+        $('.main-rooms-r').click(function(){
+            var slide_w = parseInt($('#main-rooms-over').width())+20;
+            var step = parseInt($('#main-rooms-over').data('step'))+1;
+            var steps = $('#main-rooms-over').data('steps');
+
+            if(step >= steps) step = 0;
+            $('#main-rooms-over').data('step', step);
+
+            var slide = step*slide_w;
+            $('#main-rooms-over').stop().animate({scrollLeft: slide}, 750);
+        });
+
+        
+        
+		
+                
+	$('#main-review-btn span[data-n=0]').click();
+        $('#main-gallery-menu div').eq(0).click();
+
+    });
+    
+    function set_btn_img(n){
+        $('#main-gallery-btns span').css('background-position', '-544px 0px').attr('ac', 0);
+        $('#main-gallery-btns span').eq(n).css('background-position', '-500px 0px').attr('ac', 1);
+    }
+    
+    function set_btn_img_head(n, move){
+        var max = 6; 
+        if(move == 1){
+            n++;
+            if(n > max) n=1;
+        }else if(move == 0){
+            n--;
+            if(n < 1) n = max;
+        }
+        
+        var src = $('#main-photo-btns span').eq((n-1)).data('src');
+        var img = '<img style="width:100%" src="'+src+'" />';
+        
+        $('#main-photo-list').data('n', n);
+        $('#main-photo-list').html(img);
+        
+        $('#main-photo-btns span').css('background-position', '-544px 0px').attr('ac', 0);
+        $('#main-photo-btns span').eq((n-1)).css('background-position', '-500px 0px').attr('ac', 1);
+        
+    }
+    
+    function mob_hot_gallery(t){
+        var images = $(t).data('img');
+       //$('#main-gallery-img').html(img);
+
+       var amount = images.length;
+       var btns = '';
+        var gallery_img = '';
+        
+       for (i=0; i < amount; i++) {
+           gallery_img += '<div class="swiper-slide"><img  src="/h20/img/hotel/'+images[i]+'" /></div>';
+       }
+       
+       $('#main-gallery-photos .swiper-wrapper').html(gallery_img);
+       
+       if(swiper_main_gallery != '') swiper_main_gallery.destroy(true, true);
+    
+
+        swiper_main_gallery = new Swiper('.swiper-container', {
+          navigation: {
+            nextEl: '.mob-rooms-r',
+            prevEl: '.mob-rooms-l',
+            
+          },
+        });
+    }
+</script>
+
+<style>
+    </style>
+</head>
+<body  data-login="" >
+<div id="TB_overlay"></div>
+<div id="black-sc"></div>
+
+<div class="c-back" id="mob-popup-menu">
+    <div id="mob1">
+                <a  href="index.html">Главная</a>
+            <a  href="rooms.html">Номера</a>
+            <a  href="gallery.html">Галерея</a><a  href="actions.html">Акции</a>            <a  href="book.html">Забронировать</a>
+            <a  href="review.html">Отзывы</a>
+            <a  href="articles.html">Статьи</a>
+            <a  href="contact.html">Контакты</a>
+    </div>
+</div>
+
+<div class="c-back" id="top">
+    <div class="center">
+        Гостиница «Равенн»  &nbsp; +7 (978) 843 12 73<!--    <div class="fr popup-triangle ttu" id="office-enter">вход в кабинет<span></span></div>
+    <div class="fr popup-triangle mr30 ttu" id="top-callback-do">Заказать обратный звонок<span></span></div>
+    <div class="fr popup-triangle popup-callback mr30" id="top-callback"><i></i>+7 978 776 91 67 Россия<span></span></div>
+    <div class="fr popup-triangle mr30" id="office-enter">Гривны<span></span></div>-->
+    </div>
+</div>
+<div id="mob-top">
+<div class="center">
+    <div id="top-menu">
+        <span style="position:absolute; left:0px; bottom:-12px; text-transform:uppercase;">официальный сайт</span    	<a href="index.html">
+            <img class="fl" alt="Официальный сайт " title="Официальный сайт " src="h20/img/logo.png" />
+        </a>
+        <div  data-mobile="" class="c-text mob-hide" id="top-menu-list">
+            <a  href="index.html">Главная</a>
+            <a  href="rooms.html">Номера</a>
+            <a  href="gallery.html">Галерея</a><a  href="actions.html">Акции</a>            <a  href="book.html">Забронировать</a>
+            <a  href="review.html">Отзывы</a>
+            <a  href="articles.html">Статьи</a>
+            <a  href="contact.html">Контакты</a>
+        </div>
+        
+        <span class="c-back" id="mob-top-menu-btn"><span class="menu-icon-toggle"><span></span></span></span>
+        <br class="cb" />
+    </div>
+</div>
+</div>
+<div style="height: 600px" class="pr" id="main-photo">
+	<div id="main-landing">
+    	<div id="main-landing-offer">Бронируй сейчас <div><!--И получи сразу скидку <span>5%</span>--></div></div>
+        <input id="main-landing-input" type="text" value="" placeholder="введите телефон либо e-mail" />
+        <div data-text="Отправить заявку" id="main-landing-send">Отправить заявку</div>
+<!--        <div id="main-landing-action">До конца акции осталось</div>
+        <div class="fl main-landing-date main-landing-date1"><div>02</div><span>дней</span></div><div class="fl main-landing-date-circle"></div>
+       	<div class="fl main-landing-date"><div>10</div><span>часов</span></div><div class="fl main-landing-date-circle"></div>
+        <div class="fl main-landing-date"><div>15</div><span>минут</span></div><div class="fl main-landing-date-circle"></div>
+       	<div class="fl main-landing-date"><div>07</div><span>секунд</span></div>
+        <br class="cl" />-->
+    </div>
+    <div style="height: 600px" data-n="1" id="main-photo-list"><img style="width:100%" src="h20/img/head/big_GcuJ.jpg" /></div>
+    <div class="" id="main-photo-left"><span></span></div>
+    <div class="" id="main-photo-right"><span></span></div>
+    <div id="main-photo-control">
+            </div>
+    <div style="margin-left: -87px" id="main-photo-btns"><span data-n="1" data-src="/h20/img/head/big_GcuJ.jpg"  ac="1" style="background-position:-500px 0px;"></span><span data-n="2" data-src="/h20/img/head/big_tYqq64.jpg" ac="0"></span><span data-n="3" data-src="/h20/img/head/big_ag1XZF.jpg" ac="0"></span><span data-n="4" data-src="/h20/img/head/big_yn1Sc0.jpg" ac="0"></span><span data-n="5" data-src="/h20/img/head/big_jgjW.jpg" ac="0"></span><span data-n="6" data-src="/h20/img/head/big_tOR20v.jpg" ac="0"></span></div>
+    
+    
+</div>
+
+
+
+<div class="center">
+    </div>
+
+<div class="center">
+    <div class="mob-cen">
+        <div class="c-back select-list-frame" id="main-photo-book">
+            <div class="fl ">
+                <div class="fl">
+                    <div class="main-book-title">Заезд</div>
+                    <input readonly class="date inp-date-s" type="text" placeholder="выберите" value="" data-callback="recalc" />
+                </div>
+                <div class="fl">
+                    <div class="main-book-title">Выезд</div>
+                    <input readonly class="date inp-date-e" type="text" placeholder="выберите" value="" data-callback="recalc" />
+                </div>
+            </div>
+            
+            <div class="fl mob-mt20">
+                <div class="fl mr10 mob-mr10">
+                     <div class="main-book-title">Взрослых</div>
+                    
+                            <div style="width:39px;" data-cook="adults" data-callback="recalc" class="select-list fl" data-val="2">
+                                    <span class="select-list-view">2</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div><div data-val="5">5 </div><div data-val="6">6 </div>
+                                    </div>
+                            </div>
+                                            </div>
+        
+                <div class="fl mr20 mob-mr10">
+                     <div class="main-book-title">Детей</div>
+                    
+                            <div style="width:39px;" data-cook="children" data-callback="recalc, child_view" class="select-list " data-val="0" >
+                                    <span class="select-list-view">0</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="0">0 </div><div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div>
+                                    </div>
+                            </div>
+                                            </div>
+                <div class="fl">
+                    <div class="childs-tip main-book-title">возраст детей</div>
+                    <div>
+                        
+                            <div style="width:0px;" data-cook="ch1" data-callback="recalc" class="select-list sel-child fl mr10" data-val="8" data-n="1">
+                                    <span class="select-list-view">8</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div><div data-val="5">5 </div><div data-val="6">6 </div><div data-val="7">7 </div><div data-val="8">8 </div><div data-val="9">9 </div><div data-val="10">10 </div><div data-val="11">11 </div><div data-val="12">12 </div><div data-val="13">13 </div><div data-val="14">14 </div><div data-val="15">15 </div><div data-val="16">16 </div><div data-val="17">17 </div><div data-val="18">18 </div>
+                                    </div>
+                            </div>
+                            
+                            <div style="width:0px;" data-cook="ch2" data-callback="recalc" class="select-list sel-child fl mr10" data-val="8" data-n="2">
+                                    <span class="select-list-view">8</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div><div data-val="5">5 </div><div data-val="6">6 </div><div data-val="7">7 </div><div data-val="8">8 </div><div data-val="9">9 </div><div data-val="10">10 </div><div data-val="11">11 </div><div data-val="12">12 </div><div data-val="13">13 </div><div data-val="14">14 </div><div data-val="15">15 </div><div data-val="16">16 </div><div data-val="17">17 </div><div data-val="18">18 </div>
+                                    </div>
+                            </div>
+                            
+                            <div style="width:0px;" data-cook="ch3" data-callback="recalc" class="select-list sel-child fl mr10" data-val="8" data-n="3">
+                                    <span class="select-list-view">8</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div><div data-val="5">5 </div><div data-val="6">6 </div><div data-val="7">7 </div><div data-val="8">8 </div><div data-val="9">9 </div><div data-val="10">10 </div><div data-val="11">11 </div><div data-val="12">12 </div><div data-val="13">13 </div><div data-val="14">14 </div><div data-val="15">15 </div><div data-val="16">16 </div><div data-val="17">17 </div><div data-val="18">18 </div>
+                                    </div>
+                            </div>
+                            
+                            <div style="width:0px;" data-cook="ch4" data-callback="recalc" class="select-list sel-child fl mr0" data-val="8" data-n="4">
+                                    <span class="select-list-view">8</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div><div data-val="5">5 </div><div data-val="6">6 </div><div data-val="7">7 </div><div data-val="8">8 </div><div data-val="9">9 </div><div data-val="10">10 </div><div data-val="11">11 </div><div data-val="12">12 </div><div data-val="13">13 </div><div data-val="14">14 </div><div data-val="15">15 </div><div data-val="16">16 </div><div data-val="17">17 </div><div data-val="18">18 </div>
+                                    </div>
+                            </div>
+                                                    <br class="cl" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fr mob-mt20 ">
+                <div class="main-book-title tac">Поиск <span class="mob-hide">свободных</span> номеров</div>
+                <a href="search.html" class="btn-bg fr" id="main-search-do" onclick="yaCounter46977834.reachGoal('freeroom');ga('send', 'event', 'freeroomscan', 'scan')">Найти <span class="mob-hide">свободный</span> номер</a>
+                <br class="cb" />
+            </div>
+    
+        <!--        <div class="fr" id="main-photo-boot-text"></div>-->
+            <br class="cb" />
+        </div>
+    </div>
+</div>
+
+<!--<div class="center c-text" id="main-teps">
+	<div id="main-landing-title">Почему Вам надо забронировать отель «Алвис» прямо сейчас</div>
+    
+    <div class="fl main-steps-step main-steps-1">1</div> <div class="fl main-steps-line"></div>
+    <div class="fl main-steps-step">2</div> <div class="fl main-steps-line"></div>
+    <div class="fl main-steps-step">3</div> <div class="fl main-steps-line"></div>
+    <div class="fl main-steps-step">4</div> <div id="main-steps-check"><img src="/img/main-check.png" /></div>
+    <br class="cl" />
+    <div class="fl main-steps-text">Парковая зона,<br />до моря 250 метров</div>
+    <div class="fl main-steps-text">У нас есть<br />свободные номера</div>
+    <div class="fl main-steps-text">На нашем сайте<br />для Вас скидка 5%</div>
+    <div class="fl main-steps-text mr0">Гарантия брони<br />от хозяина отеля</div>
+    <br class="cl" />
+</div>-->
+
+<div class="center pr" id="main-rooms">
+    <div class="c-back mob-rooms-l">←</div>
+    <div class="c-back mob-rooms-r">→</div>
+    <div id="mob-rooms-r"></div>
+    <div class="mob-cen">
+        <div class="c-text main-rooms-title">Номерной фонд гостиницы «Равенн» <a class="link-color" href="rooms.html">показать все 4</a></div>
+        <div id="main-rooms-btns">
+                        <div data-steps="1" data-step="0" id="main-rooms-over">
+                <div data-w="9999999" style="width:964px;" id="main-rooms-over-in">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            
+					<div data-id="4" class="main-room calc-room swiper-slide">
+						<a href="roomdcfd.html?id=4" class="main-room-img">
+                                                    <div class="action-cost">
+                                                        <i class="calc-sale-day calc-sale hide">2000</i>
+                                                        <span class="calc-cost-day load-cost"> 2000 руб</span>
+                                                        <div class="calc-room-places load-cost">за 2 чел.</div>    
+                                                    </div>
+                                                    <img src="h20/img/room/middle_Ujd0hz.jpg" />
+                                                </a>
+						<div class="pad10 c2-text">
+							<div class="c-text main-room-name">Эконом </div>
+							<hr />
+							<div>Основных мест: 2 &nbsp; Доп. мест: 0</div>
+							<div class="main-room-bad">Кровать: Двуспальная кровать</div>
+							<hr />
+							<div class="main-room-char">телевизор, санузел, кровать, фен, кондиционер, холодильник, Wi-Fi</div>
+							<a href="roomdcfd.html?id=4" class="fl btn2-bg main-room-mere" >подробнее</a>
+							<a href="bookdcfd.html?id=4" class="fr btn2-bg main-room-book" >бронировать</a>
+							<br class="cb" />
+						</div>
+					</div>
+					
+					<div data-id="1" class="main-room calc-room swiper-slide">
+						<a href="room681a.html?id=1" class="main-room-img">
+                                                    <div class="action-cost">
+                                                        <i class="calc-sale-day calc-sale hide">2500</i>
+                                                        <span class="calc-cost-day load-cost"> 2500 руб</span>
+                                                        <div class="calc-room-places load-cost">за 2 чел.</div>    
+                                                    </div>
+                                                    <img src="h20/img/room/middle_21OPX.jpg" />
+                                                </a>
+						<div class="pad10 c2-text">
+							<div class="c-text main-room-name">Стандарт  с общей кроватью</div>
+							<hr />
+							<div>Основных мест: 2 &nbsp; Доп. мест: 1</div>
+							<div class="main-room-bad">Кровать: 1 двухспальная или 2 раздвижные</div>
+							<hr />
+							<div class="main-room-char">телевизор, санузел, кровать, фен, вид, кондиционер, холодильник, Wi-Fi</div>
+							<a href="room681a.html?id=1" class="fl btn2-bg main-room-mere" >подробнее</a>
+							<a href="book681a.html?id=1" class="fr btn2-bg main-room-book" >бронировать</a>
+							<br class="cb" />
+						</div>
+					</div>
+					
+					<div data-id="3" class="main-room calc-room swiper-slide">
+						<a href="roomd708.html?id=3" class="main-room-img">
+                                                    <div class="action-cost">
+                                                        <i class="calc-sale-day calc-sale hide">2700</i>
+                                                        <span class="calc-cost-day load-cost"> 2700 руб</span>
+                                                        <div class="calc-room-places load-cost">за 2 чел.</div>    
+                                                    </div>
+                                                    <img src="h20/img/room/middle_N9ehnY.jpg" />
+                                                </a>
+						<div class="pad10 c2-text">
+							<div class="c-text main-room-name">Комфорт с общей кроватью </div>
+							<hr />
+							<div>Основных мест: 2 &nbsp; Доп. мест: 1</div>
+							<div class="main-room-bad">Кровать: Двуспальная + раскладное кресло. </div>
+							<hr />
+							<div class="main-room-char">телевизор, балкон, санузел, кровать, фен, вид, кондиционер, холодильник, Wi-Fi</div>
+							<a href="roomd708.html?id=3" class="fl btn2-bg main-room-mere" >подробнее</a>
+							<a href="bookd708.html?id=3" class="fr btn2-bg main-room-book" >бронировать</a>
+							<br class="cb" />
+						</div>
+					</div>
+					
+					<div data-id="2" class="main-room calc-room swiper-slide">
+						<a href="room0b30.html?id=2" class="main-room-img">
+                                                    <div class="action-cost">
+                                                        <i class="calc-sale-day calc-sale hide">3000</i>
+                                                        <span class="calc-cost-day load-cost"> 3000 руб</span>
+                                                        <div class="calc-room-places load-cost">за 2 чел.</div>    
+                                                    </div>
+                                                    <img src="h20/img/room/middle_DN7H1.jpg" />
+                                                </a>
+						<div class="pad10 c2-text">
+							<div class="c-text main-room-name">Двухкомнатный Люкс</div>
+							<hr />
+							<div>Основных мест: 4 &nbsp; Доп. мест: 1</div>
+							<div class="main-room-bad">Кровать: 1 круглая, 1 диван -трансформер</div>
+							<hr />
+							<div class="main-room-char">телевизор, балкон, санузел, кровать, фен, вид, кондиционер, холодильник, Wi-Fi</div>
+							<a href="room0b30.html?id=2" class="fl btn2-bg main-room-mere" >подробнее</a>
+							<a href="book0b30.html?id=2" class="fr btn2-bg main-room-book" >бронировать</a>
+							<br class="cb" />
+						</div>
+					</div>
+					                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br class="cl" />
+    </div>
+</div>
+
+
+
+
+
+<div class="center" id="main-price">
+    <div class="mob-cen">
+	<div class="mt20 c-text main-rooms-title">Стоимость проживания за номер в сутки</div>
+    <table id="main-price-table" cellpadding="5" cellspacing="0" border="0" width="100%">
+            	<tr class="main-trH btn-bg">
+                	<td></td><td>с 01 окт<br />по 31 дек</td><td>с 01 янв<br />по 15 янв</td><td>с 16 янв<br />по 28 апр</td><td>с 29 апр<br />по 10 мая</td><td>с 11 мая<br />по 31 мая</td><td>с 01 июня<br />по 15 июня</td><td>с 16 июня<br />по 15 июля</td><td>с 06 июля<br />по 31 авг</td><td>с 01 сен<br />по 30 сен</td>                </tr>
+                <tr class="main-tr"><td><a href="roomdcfd.html?id=4">Эконом </a></td><td>2000</td><td>1900</td><td>1500</td><td>2200</td><td>1800</td><td>2300</td><td>2300</td><td>2600</td><td>2200</td></tr><tr class="main-tr"><td><a href="room681a.html?id=1">Стандарт  с общей кроватью</a></td><td>2500</td><td>2300</td><td>1700</td><td>2500</td><td>2000</td><td>2700</td><td>2900</td><td>3100</td><td>2800</td></tr><tr class="main-tr"><td><a href="roomd708.html?id=3">Комфорт с общей кроватью </a></td><td>2700</td><td>2700</td><td>2300</td><td>2800</td><td>2300</td><td>3000</td><td>3100</td><td>3300</td><td>3000</td></tr><tr class="main-tr"><td><a href="room0b30.html?id=2">Двухкомнатный Люкс</a></td><td>3000</td><td>3300</td><td>2700</td><td>3500</td><td>3300</td><td>3700</td><td>3900</td><td>4200</td><td>3700</td></tr>            </table>
+    </div>
+</div>
+
+
+
+<div class="center" id="main-plus-frame">
+    <div class="mob-cen">
+    	<div class="fl" id="main-plus">
+        	<div class="mt30 c-text main-rooms-title">Почему нас выбирают</div>
+            <div class="c2-text" id="main-our-plus">
+                <p class="c-text" id="main-plus-title">Гостиница «Равенн»</p>
+                <p id="main-plus-text">
+                    Мы работаем, чтоб Вы чувствовали себя в Крыму как дома!                </p>
+                <div>стоянка для Вашего автомобили</div><div> скоростной Wi-Fi в каждом номере</div><div>тихая уютная обстановка</div><div> самый вкусный завтрак</div><div>индивидуальный подход к каждому гостю</div><div>удобная дорожная развязка</div><div>центр города 900 метров</div><div>небольшая библиотека для гостей</div>            </div>
+        </div>
+    </div>
+</div>
+        
+<div class="center" id="main-plus-frame">
+    
+    <div class="fr" id="main-plus-right">
+    	<div class="mob-cen">
+    	    <div class="mt30 c-text main-rooms-title">Гостиница «Равенн» на карте</div>
+	    </div>
+    	<div id="YMapsID"></div>
+    </div>
+    <br class="cb" />
+    
+</div>
+
+<div class="center pr">
+    
+    
+    	<div class="fl" id="main-gallery">
+    	    <div class="mob-cen">
+            	<div class="mt30 c-text main-rooms-title">Фотогалерея отеля</div>
+            	<div data-n="0" id="main-gallery-menu">
+                    <div data-img='["big_f0KP.jpg","big_Iux43.html","big_29bNMV.html","big_CLWb.html","big_bqHf9B.html","big_IUZLFk.html","big_JJscWv.html","big_mFxcwz.html","big_Vu7GRk.html","big_PgdS.html","big_966M6O.html","big_7PW72U.html","big_09LABL.html","big_DBfzo.html","big_nvENQZ.html","big_z3eLOX.JPG"]'>Гостиница</div><div data-img='["big_YrVpj.jpg","big_zVRpE3.html","big_J4K1I.JPG"]'>Гостиница</div><div data-img='["big_z7A4j4.JPG","big_a40Bt.html","big_wEADKh.html","big_0HEXG.html","big_idcLE.html","big_U9QNL0.html","big_ZNQyEA.html","big_MuqesW.html","big_GjrCHg.html","big_J89WT.jpg"]'></div>                    <br class="cl" />
+                </div>
+            </div>
+            <div id="main-gallery-photo">
+                <div id="main-gallery-photos">
+                    <div class="swiper-container">
+                        <div class="c-back mob-rooms-l main-gallery-arr">←</div>
+                        <div class="c-back mob-rooms-r main-gallery-arr">→</div>
+                        <div class="swiper-wrapper">
+                            
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div id="main-gallery-img"><img src="img/rooms/1/2.html" /></div>
+                    <div id="main-gallery-l"><span></span></div>
+                    <div id="main-gallery-r"><span></span></div>
+                    <div id="main-gallery-btns"></div>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+<div class="center">
+    <div class="mob-cen">
+        <div class="fr" id="main-review">
+        	<div class="mt30 c-text main-rooms-title">Отзывы о нашей работе <a class="link-color" href="review.html">показать все 10</a></div>
+            <div id="main-review-frame">
+                
+                            <div data-n="0" class="review-text">
+                                <div>Замечательный бюджетный отель,в тихом районе,парковая зона</div>
+                                <div class="review-content">
+                                    <span class="quotes-icon1"></span> 
+                                    Отдыхали с мужем начало октября 2019,очень понравилось,общительный персонал,в номере очень чисто,можно за дополнительные деньги позавтракать (завтраки кстати вкусные!)До моря прогуляться прогулочным шагом по прямой через аллею Платанов 15мин.Район очень тихий в отличии от Автовокзала. Все очень понравилось рекомендую отель Равенн!!! 
+                                    <span class="quotes-icon2"></span>
+                                    <div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="review-client">
+                                    <div class="review-photo fl"><span class="review-type"><span class="review-type-love"></span></span></div>
+                                    <div class="review-name fl ml20">Ксения и Сергей<div> романтика</div></div>
+                                    <br class="cl">
+                                </div>
+                            </div>
+                            
+                            <div data-n="1" class="review-text">
+                                <div>Отель для командировки!!! </div>
+                                <div class="review-content">
+                                    <span class="quotes-icon1"></span> 
+                                    В начале октября в коллегой был в командировке в Алуште, в отель попали ночью, но добродушный администратор напоил нас чаем, выдал посуду, чтоб мы перекусили... Попросили завтрак по-раньше- в 7-00, уже все было готово. Цена здесь полностью соответствует качеству сервиса. Спасибо! Еще обязательно вернемся, но уже на летний отдых.!!! 
+                                    <span class="quotes-icon2"></span>
+                                    <div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="review-client">
+                                    <div class="review-photo fl"><span class="review-type"><span class="review-type-business"></span></span></div>
+                                    <div class="review-name fl ml20">Константин Зубарев<div> деловая</div></div>
+                                    <br class="cl">
+                                </div>
+                            </div>
+                            
+                            <div data-n="2" class="review-text">
+                                <div>Особенное место!</div>
+                                <div class="review-content">
+                                    <span class="quotes-icon1"></span> 
+                                    Приезд в Алушту был связан с работой и выбор отеля стоял не критично,но все же хотелось тишины,комфорта и человеческого отношения)Выбор пал на Ravenny и ни минуту об этом я не пожалела!Отель всего лишь 10 номеров,но в этом то и плюс!тишина,спокойствие и никакой суеты!Удобная транспортная развязка,до моря км.1,5 при хорошей погоде и таких красотах грех не погулять пешком!!!Номера чистые,уборка каждый день!!Девчатам спасибо-все вопросы решаются на ура!!!)Место супер,обязательно вернусь и всем порекомендую!!!Вы большие молодцы!!! 
+                                    <span class="quotes-icon2"></span>
+                                    <div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="review-client">
+                                    <div class="review-photo fl"><span class="review-type"><span class="review-type-business"></span></span></div>
+                                    <div class="review-name fl ml20">Антонина<div> деловая</div></div>
+                                    <br class="cl">
+                                </div>
+                            </div>
+                            
+                            <div data-n="3" class="review-text">
+                                <div>Замечательный отдых в Алуште</div>
+                                <div class="review-content">
+                                    <span class="quotes-icon1"></span> 
+                                    Спасибо персоналу отеля Равенн в Алуште! Благодаря им - это был наш лучший отдых. Для нас приехать в Крым было не просто- нынче очень дорого, пришлось экономить на жилье!За 2800 руб. К сожалению отель не на море, но зато здесь нам удалось выспаться! в Августе мы забронировали просторный, чистый, уютный номер( по моему №2). В номере оказалось все что нам нужно, а все чего не хватает- можно получить у администратора. В первую очередь нас удивила чистота номера, туалета, постельного, белоснежных полотенец.... к сожалению, но за время нашего путешествия  мы многое повидали и для нас это здоровье и личная гигиена- важный критерий. Приветливые администраторы, даже когда мы возвращались с прогулу под утро...  Если Вы не знаете что и где купить- не расстраивайтесь- здесь Вам все расскажут и покажут! Когда не было желания идти в ресторан мы с удовольствием покупали свежайшую готовую еду в Соседях или ходили в столовую Кормилица!!! Всего не перечесть- Алушта очень живописная, Крым фантастически красивый, но то место, где мы остановились имеет необыкновенную атмосферу Гостеприимства! Спасибо девочки! Еще вернемся обязательно!!!! 
+                                    <span class="quotes-icon2"></span>
+                                    <div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="review-client">
+                                    <div class="review-photo fl"><span class="review-type"><span class="review-type-love"></span></span></div>
+                                    <div class="review-name fl ml20">Серебрякова Мария<div> романтика</div></div>
+                                    <br class="cl">
+                                </div>
+                            </div>
+                            
+                            <div data-n="4" class="review-text">
+                                <div>Отдых в Равенне</div>
+                                <div class="review-content">
+                                    <span class="quotes-icon1"></span> 
+                                    Гостиница просто лучшая в Крыму! Мы остановились в стандарте за 2500 рублей. Так вот, перед этим мы заселились в другой гостинице (островок) в люкс за 5000,так в Равенне стандарт на порядок лучше люкса!!! За это лето мы проехали от Сочи до Алушты и это самая лучшая гостиница, в которых мы останавливались. 
+Завтрак просто божественен! Большое спасибо 
+                                    <span class="quotes-icon2"></span>
+                                    <div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="review-client">
+                                    <div class="review-photo fl"><span class="review-type"><span class="review-type-love"></span></span></div>
+                                    <div class="review-name fl ml20">Никита<div> романтика</div></div>
+                                    <br class="cl">
+                                </div>
+                            </div>
+                            
+                            <div data-n="5" class="review-text">
+                                <div>Прекрасный отель!</div>
+                                <div class="review-content">
+                                    <span class="quotes-icon1"></span> 
+                                    Мы очень рады, что выбрали этот отель! Очень приятный персонал! Вкуснейшие завтраки! Атмосфера тепла и уюта!Спасибо девочки, что позаботились о нашем отдыхе! 
+                                    <span class="quotes-icon2"></span>
+                                    <div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="review-client">
+                                    <div class="review-photo fl"><span class="review-type"><span class="review-type-child"></span></span></div>
+                                    <div class="review-name fl ml20">Вероника Васильева<div> с детьми</div></div>
+                                    <br class="cl">
+                                </div>
+                            </div>
+                            
+                            <div data-n="6" class="review-text">
+                                <div>Уют с вкусным завтраком на выбор</div>
+                                <div class="review-content">
+                                    <span class="quotes-icon1"></span> 
+                                    Тихо, уютно, чисто.Спасибо чудо-женщине на ресепшн за улыбку, бокалы и завтрак! 
+                                    <span class="quotes-icon2"></span>
+                                    <div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="review-client">
+                                    <div class="review-photo fl"><span class="review-type"><span class="review-type-love"></span></span></div>
+                                    <div class="review-name fl ml20">Светлана<div> романтика</div></div>
+                                    <br class="cl">
+                                </div>
+                            </div>
+                            
+                            <div data-n="7" class="review-text">
+                                <div>Отличный отель</div>
+                                <div class="review-content">
+                                    <span class="quotes-icon1"></span> 
+                                    Отдыхали в Крыму первый раз, остановили выбор на Алуште и остались очень довольны! Отель очень понравился, достаточно хороший и свежий ремонт, отзывчивый персонал, помогали с любыми просьбами, очень вкусные завтраки, которые готовятся лично для тебя, в любое время на сколько заказал, большой ассортимент! Если не принципиальна первая линия от моря, то очень советуем выбирать именно этот отель! 
+                                    <span class="quotes-icon2"></span>
+                                    <div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="review-client">
+                                    <div class="review-photo fl"><span class="review-type"><span class="review-type-love"></span></span></div>
+                                    <div class="review-name fl ml20">Евгений и Вероника Комаровы<div> романтика</div></div>
+                                    <br class="cl">
+                                </div>
+                            </div>
+                            
+                            <div data-n="8" class="review-text">
+                                <div>Очень довольны пребыванием в отеле "Равенн"</div>
+                                <div class="review-content">
+                                    <span class="quotes-icon1"></span> 
+                                    О пребывании в отеле у нас остались только приятные впечатления. Очень рады, что остановились именно здесь. Выбрали этот отель, ориентируясь на отзывы о нём в Интернете, и не ошиблись. Отдыхали здесь со 2 по 12 августа 2016 года.
+
+О номере: номер чистый, уютный, просторный, с качественным ремонтом, оборудован кондиционером, хорошей немецкой сантехникой, окна выходят на виноградники расположенного рядом филиала винзавода "Массандра", фотографии номеров на сайте соответствуют действительности, есть всё необходимое для проживания, в том числе хороший бесплатный wi-fi. С горячей водой никаких проблем не возникало.
+
+О завтраках: вкусные и сытные домашние завтраки, которые готовят в удобное для гостей время в соответствии с заказом; выбор очень большой - сырники, блинчики, омлет, яичница с ветчиной, каши, есть даже фруктовые завтраки; ароматный и вкусный зерновой кофе. За дополнительную плату можно заказывать обед и ужин.
+
+О расположении отеля: отель расположен в 20-25 минутах ходьбы от моря, для нас это было "плюсом", поскольку ночью не мешает музыка и суета набережной. В здании на первом этаже расположен супермаркет, где можно купить продукты и напитки. Напротив отеля - фирменный магазин массандровских вин. Рядом можно купить фрукты, пообедать или поужинать в недорогом кафе. Остановка маршруток находится рядом, можно уехать в любую точку Алушты.
+
+О персонале и сервисе: обслуживание порадовало, каждый день убирают номер, своевременно меняют постельное бельё и полотенца, поддерживают чистоту и порядок. Администраторы Эльвира и Юлия очень доброжелательные и отзывчивые, готовы помочь в решении любых вопросов, любящие свою работу. По нашему мнению, именно благодаря им в отеле присутствует атмосфера гостеприимства и домашней теплоты.
+
+О дополнительных услугах: есть возможность заказать трансфер по приемлемой цене, качеством мы остались довольны. Можно заказать экскурсии через администраторов, выяснить все необходимые детали.
+
+С удовольствием вернёмся сюда снова. Рекомендуем отель всем, кто планирует отдохнуть в Алуште. Цена полностью оправдывает качество. 
+                                    <span class="quotes-icon2"></span>
+                                    <div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="review-client">
+                                    <div class="review-photo fl"><span class="review-type"><span class="review-type-love"></span></span></div>
+                                    <div class="review-name fl ml20">Татьяна и Андрей Качаловы<div> романтика</div></div>
+                                    <br class="cl">
+                                </div>
+                            </div>
+                            
+                            <div data-n="9" class="review-text">
+                                <div>Далековато</div>
+                                <div class="review-content">
+                                    <span class="quotes-icon1"></span> 
+                                    До моря примерно 20 минут, в принципе неплохо. Номера чистые, аккуратные, относительно современные. Завтрак неплохой. Как и во многих местах, надо успеть помыться, ибо стоят накопители горячая вода имеет обыкновение быстро заканчиваться.
+
+Пребывание в Июне 2015, тип поездки: поездка в одиночку 
+                                    <span class="quotes-icon2"></span>
+                                    <div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="review-client">
+                                    <div class="review-photo fl"><span class="review-type"><span class="review-type-one"></span></span></div>
+                                    <div class="review-name fl ml20">Елена<div> один</div></div>
+                                    <br class="cl">
+                                </div>
+                            </div>
+                                            <div data-step="0" id="main-review-btn"><span data-n="9"></span><span data-n="8"></span><span data-n="7"></span><span data-n="6"></span><span data-n="5"></span><span data-n="4"></span><span data-n="3"></span><span data-n="2"></span><span data-n="1"></span><span data-n="0"></span><br class="cb" /></div>
+            </div>
+        </div>
+        <br class="cb" />
+    </div>
+</div>
+
+<div class="center">
+    <div class="mob-cen">
+        <div class="mt40" id="char-hotel-frame">
+            <div  class="char-hotel "><span class="char-hotel-icon icon-room icon-hotel-o"></span><span class="char-hotel-text"><b>Питание:</b>есть</span></div><div  class="char-hotel "><span class="char-hotel-icon icon-room icon-hotel-u"></span><span class="char-hotel-text"><b>Количество этажей:</b>1</span></div><div  class="char-hotel "><span class="char-hotel-icon icon-room icon-hotel-3"></span><span class="char-hotel-text"><b>Парковка:</b>общественная</span></div><div  class="char-hotel "><span class="char-hotel-icon icon-room icon-hotel-2"></span><span class="char-hotel-text"><b>WiFi:</b>бесплатный</span></div><div  class="char-hotel "><span class="char-hotel-icon icon-room icon-hotel-6"></span><span class="char-hotel-text"><b>Номерной фонд:</b>10</span></div><div  class="char-hotel "><span class="char-hotel-icon icon-room icon-hotel-y"></span><span class="char-hotel-text"><b>Период работы:</b>круглый год</span></div>            <br class="cl" />
+        </div>
+    </div>
+</div>
+
+<div class="center">
+    <div class="mob-cen">
+        <div class="mt20" id="land-text">
+            
+                                    <hr />
+                                    <h3></h3>
+                                    <div class="hotel-room-text mt10"></div>
+                                    
+                                    <hr />
+                                    <h3></h3>
+                                    <div class="hotel-room-text mt10">                                         Уважаемые Гости!Добро пожаловать в отель Равенн!<br />
+                                                Добро пожаловать на Южный берег Крыма!<br />
+   Отель Равенн находится (не на море) 1,5 км. от Черного моря по адресу г.Алушта, пер. Иванова 1 в здании Супермаркета "Соседи" на 2-ом этаже (вход справа). Более подробно, если Вы не знаете, как добраться к нам в отель - описание в нашей группе ВК: https://vk.com/ravennahotel<br />
+<br />
+   ПОЧЕМУ ВЫ ВЫБИРАЕТЕ ОТЕЛЬ Равенн: <br />
+<br />
+1. ОТЕЛЬ Равенн ИДЕАЛЬНО ПОДХОДИТ ДЛЯ КОМАНДИРОВОЧНЫХ ГОСТЕЙ:<br />
+ - отель Равенн находится:<br />
+900 метров (в пешей доступности от центра города Алушта);<br />
+1,5 км. от центральной набережной;<br />
+31 км. до г.Ялты, 51 км. до столицы Крыма Симферополь, 100 км. до Севастополя и 80 км. до Судака<br />
+ - рядом с нами в шаговой доступности:<br />
+   супермаркет "Соседи", винзавод " Массандра", отдел полиции<br />
+ - отель предоставляет все необходимые документы для отчета <br />
+ - у нас Вы можете не дорого снять номер<br />
+ - предоставляем скидки от 15% на групповые и длительные заезды<br />
+ - качество сервиса и уборки на высоком уровне<br />
+ - предоставляем скидки в столовые и ресторан "Старый Город"<br />
+<br />
+<br />
+2. ОТЕЛЬ Равенн ИДЕАЛЬНО ПОДХОДИТ ДЛЯ ПУТЕШЕСТВЕННИКОВ:<br />
+ - Вы можете попасть в любую точку Крыма за считанные часы , будь то Симферополь , Севастополь, Судак…, а дорога до Ялты занимает всего 25 минут;<br />
+ - в Алуште очень много природных достопримечательностей, если Вы запланировали поход в горы- 20 метров от нас остановка с транспортом - Вы можете уехать в любую точку города...<br />
+ - стойка регистрации круглосуточная<br />
+ - мы Вас можем покормить ранним завтраком ( с 6-00 утра на Ваше усмотрение)<br />
+ - каждому путешественнику - чашечка согревающего чая в подарок!<br />
+ - до Черного моря 1,5 км. по центральной улице Ленина<br />
+<br />
+3. ОТЕЛЬ Равенн ИДЕАЛЬНО ПОДХОДИТ ДЛЯ ГОСТЕЙ, КОТОРЫЕ ПРИЕХАЛИ НА СБОРЫ, ТУРНИРЫ, СОРЕВНОВАНИЯ В СПОРТИВНЫЙ КОМПЛЕКС "СПАРТАК" - 7 минут пешком или 4 минуты на городском транспорте.<br />
+ВЫ МОЖЕТЕ ОСАНОВИТЬСЯ У НАС С КОМФОРТОМ И ПО ДЕМОКРАТИЧНОЙ ЦЕНЕ.<br />
+  <br />
+4.ОТЕЛЬ Равенн ИДЕАЛЬНО ПОДХОДИТ ВСЕМ ГОСТЯМ КРЫМА, КОТОРЫЕ ВЫБИРАЮТ КОМФОРТ И ПРИЕМЛЕМЫЕ ЦЕНЫ!!!! <br />
+<br />
+МЫ РАБОТАЕМ ДЛЯ ВАС КРУГЛЫЙ ГОД! ДЛЯ НАС КАЖДЫЙ ГОСТЬ ОСОБЕННЫЙ, МЫ РАДЫ ВАМ В ЛЮБОЕ ВРЕМЯ ГОДА И СУТОК!!<br />
+<br />
+ЗАБРОНИРОВАТЬ НОМЕР МОЖНО ПО ТЕЛЕФОНУ +7(978) 843 12 73  ИЛИ +7(978) 562 10 93 <br />
+<br />
+Отдых в Алуште в отеле Равенн – это приятная возможность провести время у моря всей семье, в компании друзей и даже в одиночку, насладиться красотами крымских пейзажей, оздоровиться, наполниться силами и энергией!!!!!<br />
+От отеля очень удобная дорожная развязка! Вы можете попасть в любую точку Крыма за считанные часы , будь то Симферополь , Севастополь, Судак…, а дорога до Ялты занимает всего 25 минут. <br />
+Отель Равенн подходит тем, кто хочет спокойно отдохнуть на море, так как расположен в тихом и живописном районе города в 15 минутах ходьбы от прибрежной зоны и 900 метров от центра города. Напротив отеля находится Алуштинский винзавод Массандра с фирменным магазином и дегустационным залом. Осенью Вы сможете отведать лучший крымский виноград. В 10-ти метрах есть супермаркет «Соседи» в котором можно купить самые свежие продукты.<br />
+ По запросу мы предоставляем детскую кроватку до 3-х лет бесплатно.<br />
+Предлагаем Вам размещение в просторных, комфортабельных номерах, оборудованных всеми удобствами для современного путешественника.<br />
+В каждом номере: <br />
+- Кровать (1 двуспальная или 2 раздвижные);<br />
+-Шкаф<br />
+-Письменный стол;<br />
+-Стулья;<br />
+-тумба багажная<br />
+-зеркало<br />
+- холодильник<br />
+-ЖК телевизор; <br />
+- кондиционер;<br />
+- санузел;<br />
+-фен;<br />
+-тапочки, набор парфюмерии и текстиля<br />
+Номерной фонд мини отеля Равенн – 10 номеров разных типов:<br />
+-Номер эконом- для людей , которым уют и чистота- главные критерии в отдыхе( площадь 15 кв.)<br />
+- Стандарт (общая площадь от 17 до 25 .кв. м.), есть возможность предоставить дополнительное место<br />
+-Комфорт- просторный номер с балконом и видом на горы!<br />
+- Номер Люкс- это изюминка нашей гостиницы( двухкомнатный номер – спальня с круглой кроватью и просторная гостиная с обеденным столом . С балкона открывается живописный вид на виноградники. Этот номер идеально подходит для всей семьи и молодой пары.<br />
+Наши услуги:<br />
+- круглосуточный прием гостей;<br />
+-WI- fi;<br />
+- услуги прачки;<br />
+-Смена постельного белья каждые 4 дня;<br />
+- бронирование билетов на различные виды транспорта;<br />
+-организация экскурсий;<br />
+- мини бар;<br />
+-парковка (возле гостиницы);<br />
+- трансфер;<br />
+- скидка в ресторане « Старый город»<br />
+- завтраки входят в стоимость номера, мы готовим их с любовью и только из свежих и качественных продуктов.<br />
+Самая главная особенность отеля Равенн- это атмосфера уюта, тепла и настоящего Крымского гостеприимства, чтобы Вы почувствовали себя как дома!<br />
+Отель готов принимать своих гостей круглый год.<br />
+Мы сделаем любую приятную для Вас мелочь, чтоб Ваш отдых В Крыму стал незабываемым!!!</div>
+                                    
+                                    <hr />
+                                    <h3>Порядок бронирования</h3>
+                                    <div class="hotel-room-text mt10">Уважаемые Гости! Для подтверждения бронирования в отеле Равенн  Вам необходимо оставить заявку  на официальном сайте ravenna-hotel.com.ru или на почте ravenna.book@gmail.com или по телефону +7978 843 12 73 с указанием ФИО, мобильный телефон для связи, электронная почта( оставляя заявку Вы даете разрешение на обработку своих данных).<br />
+Заявка может обрабатываться в течении 5-ти часов.<br />
+Если Вам необходимо срочное предоставление информации, позвоните пожалуйста по телефону + 7 (978)843 12 73<br />
+В течении суток Вам будет выставлен счет на предоплату в размере 20% от общей стоимости номера, в течении 3-х банковских дней его необходимо оплатить или бронирование может быть анулировано. Пожалуйста укажите все Ваши пожелания заранее, во время бронирования, чтоб мы могли их исполнить.  После внесения предоплаты в течении суток Вам придет бланк с подтверждением бронирования. Уважаемые Гости! Обратите пожалуйста Ваше внимание, что внесение предоплаты только по реквизитам в бланке высланным с официального сайта на ИП Овод Анна Григорьевна! Будьте внимательны, работают мошенники. </div>
+                                    
+                                    <hr />
+                                    <h3>Расчетный час</h3>
+                                    <div class="hotel-room-text mt10">заезд с 14.00<br />
+отъезд до 12.00</div>
+                                    
+                                    <hr />
+                                    <h3>Дополнительные сервисы</h3>
+                                    <div class="hotel-room-text mt10">- трансфер ( стоимость трансфера в одну сторону из аэропорта 1600 руб.), у нас новые машины с кондиционером и очень порядочные водители, также Вы можете воспользоваться службами такси г. Симферополя: +7 (978) 841 41 41, +7(978) 833 53 53 (встреча в Аэропорту) , такси г. Алушта : +7(978) 108 08 08, +7(978) 740 50 40<br />
+<br />
+-экскурсии по Крыму (летом)</div>
+                                    
+                                    <hr />
+                                    <h3>Интернет</h3>
+                                    <div class="hotel-room-text mt10">бесплатный wi-fi</div>
+                                    
+                                    <hr />
+                                    <h3>В стоимость входит</h3>
+                                    <div class="hotel-room-text mt10">- проживание в номере зарегестрированных Гостей<br />
+- мини парфюмерия, туалетные принадлежности, тапочки<br />
+- пользование бытовой техникой в номере и на общем доступе( микроволновка, чайник, кулер с водой, тарелки, приборы, чашки.. утюг)<br />
+- пользование мини библиотекой( книги с собой не забираются)<br />
+</div>
+                                    
+                                    <hr />
+                                    <h3>Парковка</h3>
+                                    <div class="hotel-room-text mt10">Вы сможете припарковать свою машину вдоль отеля или на парковке супермаркета "Соседи" (не охраняемая под видео наблюдением)</div>
+                                    
+                                    <hr />
+                                    <h3>Территория отеля</h3>
+                                    <div class="hotel-room-text mt10">К сожалению отель маленький и не имеет своего внутреннего двора. Но в отеле Равенн очень просторный холл с уютными зонами для отдыха, зона со столиками, микроволновая печь, чайник, кулер, посуда... чтоб Ваш отдых или командировка были максимально комфортными.  На 1-вом этаже здания находится супермаркет " Соседи" ( часы работы с 8-00 до 21-00 зимой и с 8-00 до 22-00 летом), где Вы можете купить все необходимые продукты и средства гигиены, а так же готовую кулинарную продукцию, которую можно разогреть у нас в кафе. <br />
+В 20 метрах остановка городского транспорта.<br />
+В 30 метрах живописный сквер и Алуштинский Винзавод "МАССАНДРА", фирменный магазин работает круглый год, летом можно попасть на дегустацию вина, а осенью купить самый вкусный и самый дешевый виноград.<br />
+</div>
+                                    
+                                    <hr />
+                                    <h3>Стоимость доп. мест</h3>
+                                    <div class="hotel-room-text mt10">для малышей до 3-х лет мы бесплатно предоставляем кроватку или размещение на уже имеющихся местах.<br />
+для все остальных Гостей- дополнительное место -  комфортное раскладное кресло ( 70 Х 190). Дополнительные места необходимо заказывать заранее.</div>
+                                            </div>
+    </div>
+</div>
+
+
+
+<div class="c-back" id="footer">
+	<div class="center">
+    
+        <div class="fl" id="footer-company">
+            298500,<br />Россия, АР Крым, Алушта,<br />ул. Иванова<br>
+            тел.: +7 (978) 843 12 77<br>
+            e-mail: ravennahotels@gmail.com            <br /><br />
+            
+            &copy; 2021 <br />
+            Сайт + ПО для отеля
+        </div>
+        
+        <div class="fl footer-list" >
+            <div>Номерной фонд</div>
+                
+            <a href="roomdcfd.html?id=4">Эконом </a><a href="room681a.html?id=1">Стандарт  с общей кроватью</a><a href="roomd708.html?id=3">Комфорт с общей кроватью </a><a href="room0b30.html?id=2">Двухкомнатный Люкс</a>        </div>
+        
+        <div class="fl footer-list" >
+        	<div>Последние статьи</div>
+            <a href="article681a.html?id=1"></a><a href="article0b30.html?id=2"></a><a href="articled708.html?id=3"></a><a href="articledcfd.html?id=4"></a><a href="articled61c.html?id=5"></a><a href="article3a9f.html?id=6"></a><a href="article8803.html?id=7"></a>        </div>
+        
+         <br class="cl" />
+
+    </div>
+</div>
+<div id="under">
+    <a target="_blank" href="https://wintega.com/turkey/mediterranean-region-turkey/antalya">Отели Антальи</a> |
+    <a href="index.html">Главная</a> |
+    <a href="rooms.html">Номера</a> |
+    <a href="book.html">Забронировать</a> |
+    <a href="review.html">Отзывы</a> |
+    <a href="contact.html">Контакты</a> |
+    <a href="oferta.html">Оферта и политика конфиденциальности</a>
+</div>
+
+
+
+
+</body>
+</html>

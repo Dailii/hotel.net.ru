@@ -1,0 +1,647 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Написать отзыв</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="text/javascript" src="../code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+
+<link rel="stylesheet" href="css/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<script src="js/ui/1.11.1/jquery-ui.js"></script>
+
+<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>-->
+
+<script type="text/javascript" src="js/jquery.ui.datepicker-ru.js"></script>
+
+<script type="text/javascript" src="js/scriptc66d.js?ver=12"></script>
+
+<link href="css/stylec66d.css?ver=12" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/font/room/stylesheet.css">
+
+<link rel="icon" href="h20/img/favicon/ico.html" type="image/x-icon">
+<link rel="shortcut icon" href="h20/img/favicon/ico.html" type="image/x-icon">
+
+<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
+<link rel="stylesheet" href="css/font/hotel/stylesheet.css">
+
+<link rel="stylesheet" href="h20/css/stylec66d.css?ver=12">
+
+<link href='https://fonts.googleapis.com/css?family=Lobster&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" href="css/adaptive2c66d.css?ver=12">
+<script type="text/javascript" src="js/adaptivec66d.js?ver=12"></script>
+
+<link href="css/swiper.min.css" rel="stylesheet" type="text/css" />
+<script src="js/swiper.min.js"></script>
+
+
+<script src="../ulogin.ru/js/ulogin.js"></script>
+
+
+<script>
+	$(function(){
+           slider_review();
+           uLogin.initWidget('uLogin');
+           
+           $('.hotel-review-type-trip-circle').on('click', function(){	
+                    type = $(this).data('type');
+                    $(this).parent().data('type', type);
+
+                    $('.hotel-review-type-trip-circle').css({'color':'#777'} );
+                    $(this).css({'color':'#fdb714', 'background-position':'-850px 0px'});
+                    if($(this).data('type') == 'business'){
+                            $(this).find('span').css('background-position', '-292px -340px');
+                    }else if($(this).data('type') == 'love'){
+                            $(this).find('span').css('background-position', '-343px -340px');
+                    }else if($(this).data('type') == 'child'){
+                            $(this).find('span').css('background-position', '-392px -340px');
+                    }else if($(this).data('type') == 'friend'){
+                            $(this).find('span').css('background-position', '-449px -340px');
+                    }else if($(this).data('type') == 'one'){
+                            $(this).find('span').css('background-position', '-500px -340px');
+                    }
+                    
+
+                    typeRenew();
+            });
+            
+            $('.hotel-review-type-trip-circle').on('mouseenter', function(){
+                    $(this).css({'color':'#fdb714', 'background-color':'rgb(253, 183, 20)'});
+                    if($(this).data('type') == 'business'){
+                            $(this).find('span').css('background-position', '-292px -340px');
+                    }else if($(this).data('type') == 'love'){
+                            $(this).find('span').css('background-position', '-343px -340px');
+                    }else if($(this).data('type') == 'child'){
+                            $(this).find('span').css('background-position', '-392px -340px');
+                    }else if($(this).data('type') == 'friend'){
+                            $(this).find('span').css('background-position', '-449px -340px');
+                    }else if($(this).data('type') == 'one'){
+                            $(this).find('span').css('background-position', '-500px -340px');
+                    }
+            });
+            $('.hotel-review-type-trip-circle').on('mouseleave', function(){
+                    type = $(this).parent().data('type');
+
+                    $('.hotel-review-type-trip-circle[data-type != '+type+']').css({'color':'#777', 'background-color':'#fff'});
+
+                    if($(this).data('type') == 'business' && type != 'business'){
+                            $(this).find('span').css('background-position', '-542px -340px');
+                    }else if($(this).data('type') == 'love' && type != 'love'){
+                            $(this).find('span').css('background-position', '-593px -340px');
+                    }else if($(this).data('type') == 'child' && type != 'child'){
+                            $(this).find('span').css('background-position', '-642px -340px');
+                    }else if($(this).data('type') == 'friend' && type != 'friend'){
+                            $(this).find('span').css('background-position', '-699px -340px');
+                    }else if($(this).data('type') == 'one' && type != 'one'){
+                            $(this).find('span').css('background-position', '-750px -340px');
+                    }
+            });
+            
+            $('.hotel-review-photo').on('click', function(){
+                $('#photo-review-file').click();
+            });
+
+            $('#photo-review-file').on('change',  function(){
+                $('#review-img-form').submit();
+                $('#hotel-review-photos').append('<img id="photo-review-load" src="img/load10.gif" />');
+            });
+            
+            $( "#hotel-review-photos" ).sortable();
+            
+            $('#hotel-review-write-submit').on('click', function(){
+                
+                var clean = $('#voit-clean').slider('value');
+                var comfort = $('#voit-comfort').slider('value');
+                var location = $('#voit-location').slider('value');
+                var service = $('#voit-service').slider('value');
+                var sleep = $('#voit-sleep').slider('value');
+                var ratio = $('#voit-ratio').slider('value');
+
+                var title = $('.hotel-review-input-title').val();
+                var text = $.trim($('.hotel-review-input-text').val());
+                var type = $('#hotel-review-type-trip').data('type');
+                var year = $('#review-write-year').data('val');
+                var month = $('#review-write-month').data('val');
+                var name = $.trim($('.hotel-review-input-name').val());
+                var photos = $('#hotel-review-photos').html();
+                var id = $('#review-about').data('val');
+
+                var photos_arr = [];
+                if(photos != ''){
+                        $('#hotel-review-photos img').each(function( index ) {
+                                var src = $(this).attr('src');
+                                photos_arr.push(src);
+                        });
+                }
+
+                var network = $('#review-hotel-social-network').val();
+                var profile = $('#review-hotel-social-profile').val();
+                var photo1 = $('#review-hotel-social-photo1').val();
+                var photo2 = $('#review-hotel-social-photo2').val();
+                var uid = $('#review-hotel-social-uid').val();
+                var identity = $('#review-hotel-social-identity').val();
+                var email = $('#review-hotel-social-email').val();
+
+                if(text == ''){
+                        alert('Заполните "Ваш отзыв"');
+                        $('.hotel-review-input-text').focus();
+                }else if(type == ''){
+                        alert('Выберите "Какая это была поездка"');
+                }else if(name == ''){
+                        alert('Заполните "Представьтесь, пожалуйста"');
+                        $('.hotel-review-input-name').focus();
+                }else{
+                    $('#hotel-review-write-submit').html('<img src="img/load2.gif" />');
+                    $.post('review-write.html', {clean:clean, comfort:comfort, location:location, service:service, sleep:sleep, ratio:ratio, title:title, text:text, type:type, year:year, month:month, 'photos[]':photos_arr, name:name, network:network, profile:profile, photo1:photo1, photo2:photo2, uid:uid, identity:identity, email:email, id:id}, function(data){
+                            if(data == ''){
+                                top.location = 'review.html';
+                            }else{
+                                    console.log(data);
+                                    alert('Возникла ошибка. \nПерезагрузите страницу и попробуйте еще раз');	
+                            }
+                    });
+                }
+        });
+		
+
+
+
+        
+	});
+        
+        function typeRenew(){
+		var type = $('#hotel-review-type-trip').data('type');
+		console.log('type', type);
+                $('.hotel-review-type-trip-circle').css('background-color', '#fff');
+                $('.hotel-review-type-trip-circle[data-type='+type+']').css('background-color', 'rgb(253, 183, 20)');
+                
+		if(type != 'child') $('.hotel-review-icon-grey-child').css('background-position', '-642px -340px');
+		if(type != 'friend') $('.hotel-review-icon-grey-friend').css('background-position', '-699px -340px');
+		if(type != 'love') $('.hotel-review-icon-grey-love').css('background-position', '-593px -340px');
+		if(type != 'one') $('.hotel-review-icon-grey-one').css('background-position', '-750px -340px');
+		if(type != 'business') $('.hotel-review-icon-grey-business').css('background-position', '-542px -340px');
+	}
+
+        
+        function slider_review(){
+                $( "#voit-clean" ).slider({
+                        range: 'min',
+                        min: 10,
+                        max: 50,
+                        value: 40,
+                        slide: function( event, ui ) {
+                                val = parseFloat(ui.value/10);
+                                $('#voit-clean-result').html(val);
+                                hotel_review_sum();
+                        }
+                });	
+                $( "#voit-comfort" ).slider({
+                        range: 'min',
+                        min: 10,
+                        max: 50,
+                        value: 40,
+                        slide: function( event, ui ) {
+                                val = parseFloat(ui.value/10);
+                                $('#voit-comfort-result').html(val);
+                                hotel_review_sum();
+                        }
+                });	
+                $( "#voit-location" ).slider({
+                        range: 'min',
+                        min: 10,
+                        max: 50,
+                        value: 40,
+                        slide: function( event, ui ) {
+                                val = parseFloat(ui.value/10);
+                                $('#voit-location-result').html(val);
+                                hotel_review_sum();
+                        }
+                });	
+                $( "#voit-service" ).slider({
+                        range: 'min',
+                        min: 10,
+                        max: 50,
+                        value: 40,
+                        slide: function( event, ui ) {
+                                val = parseFloat(ui.value/10);
+                                $('#voit-service-result').html(val);
+                                hotel_review_sum();
+                        }
+                });	
+                $( "#voit-sleep" ).slider({
+                        range: 'min',
+                        min: 10,
+                        max: 50,
+                        value: 40,
+                        slide: function( event, ui ) {
+                                val = parseFloat(ui.value/10);
+                                $('#voit-sleep-result').html(val);
+                                hotel_review_sum();
+                        }
+                });
+                $( "#voit-ratio" ).slider({
+                        range: 'min',
+                        min: 10,
+                        max: 50,
+                        value: 40,
+                        slide: function( event, ui ) {
+                                val = parseFloat(ui.value/10);
+                                $('#voit-ratio-result').html(val);
+                                hotel_review_sum();
+                        }
+                });
+        }
+        
+        function hotel_review_sum(){
+            var sum = 0;
+            $('.hotel-review-write-voit-result').each(function(index, element) {
+                val = parseFloat($('.hotel-review-write-voit-result').eq(index).html());
+                sum = sum+val;
+            });	
+            rating = (sum/6).toFixed(1);
+            $('.hotel-review-write-love').find('b').html(rating);
+
+            rating = Math.round(rating);
+            $('.hotel-review-write-love').find('div').removeClass().addClass('icon-big-love-'+rating);
+	}
+        
+        function preview(token){
+            $.getJSON("http://ulogin.ru/token.php?host=" + encodeURIComponent(location.toString()) + "&token=" + token + "&callback=?",
+                function(data){
+                    data=$.parseJSON(data.toString());
+                if(!data.error){
+                    $('.hotel-review-input-name').val(data.first_name+' '+data.last_name);
+                    $('#review-hotel-social-email').val(data.email);
+                    $('#review-hotel-social-photo1').val(data.photo);
+                    $('#review-hotel-social-photo2').val(data.photo_big);
+                    $('#review-hotel-social-uid').val(data.uid);
+                    $('#review-hotel-social-identity').val(data.identity);
+                    $('#review-hotel-social-profile').val(data.profile);
+                    $('#review-hotel-social-network').val(data.network);
+                    
+                    $('#review-photo').html('<img src="'+data.photo+'" src="" />');
+                    
+                    $('.hotel-review-input-name').focus();
+                }
+            });
+        }
+        
+        
+        function recived_review_photo(err, photo){
+            console.log(err, photo);
+            if(err == 0){
+                $('#photo-review-load').remove();
+                $('#hotel-review-photos').append('<div><img src="'+photo+'" /><span></span></div>');
+            }else{
+                    alert('Ошибка загрузки фото. \nПопробуйте еще раз, пожалуйста.');	
+            }
+	}
+
+</script>
+    
+<style>
+    .hotel-review-write-voit-slider .ui-widget-header {background:#98ce44 !important;}
+</style>
+    
+</head>
+<body>
+<div id="TB_overlay"></div>
+<div id="black-sc"></div>
+
+<div class="c-back" id="mob-popup-menu">
+    <div id="mob1">
+                <a  href="index.html">Главная</a>
+            <a  href="rooms.html">Номера</a>
+            <a  href="gallery.html">Галерея</a><a  href="actions.html">Акции</a>            <a  href="book.html">Забронировать</a>
+            <a  href="review.html">Отзывы</a>
+            <a  href="articles.html">Статьи</a>
+            <a  href="contact.html">Контакты</a>
+    </div>
+</div>
+
+<div class="c-back" id="top">
+    <div class="center">
+        Гостиница «Равенна»  &nbsp; +7 (978) 843 12 73<!--    <div class="fr popup-triangle ttu" id="office-enter">вход в кабинет<span></span></div>
+    <div class="fr popup-triangle mr30 ttu" id="top-callback-do">Заказать обратный звонок<span></span></div>
+    <div class="fr popup-triangle popup-callback mr30" id="top-callback"><i></i>+7 978 776 91 67 Россия<span></span></div>
+    <div class="fr popup-triangle mr30" id="office-enter">Гривны<span></span></div>-->
+    </div>
+</div>
+<div id="mob-top">
+<div class="center">
+    <div id="top-menu">
+        <span style="position:absolute; left:0px; bottom:-12px; text-transform:uppercase;">официальный сайт</span    	<a href="index.html">
+            <img class="fl" alt="Написать отзыв" title="Написать отзыв" src="h20/img/logo.png" />
+        </a>
+        <div  data-mobile="" class="c-text mob-hide" id="top-menu-list">
+            <a  href="index.html">Главная</a>
+            <a  href="rooms.html">Номера</a>
+            <a  href="gallery.html">Галерея</a><a  href="actions.html">Акции</a>            <a  href="book.html">Забронировать</a>
+            <a  href="review.html">Отзывы</a>
+            <a  href="articles.html">Статьи</a>
+            <a  href="contact.html">Контакты</a>
+        </div>
+        
+        <span class="c-back" id="mob-top-menu-btn"><span class="menu-icon-toggle"><span></span></span></span>
+        <br class="cb" />
+    </div>
+</div>
+</div><div class="mb20" id="bread-crumbs">
+<div class="center">
+	<a href="index.html">главная</a> / написать отзыв
+</div>
+</div>
+
+<div class="center">
+    <div class="fl" id="rooms-left">
+    	
+<script>
+    $(function(){ $('#left-search-head span').css('border-top-color', $('.c-back').eq(0).css('background-color'));  }); 
+</script>
+
+<div id="left-search">
+    <div class="c-back" id="left-search-head">
+        <div>поиск<br />свободных номеров</div>
+        <span style=""></span>
+    </div>
+    <div id="left-search-input">
+        заезд
+        <input class="date inp-date-s" type="text" placeholder="выберите" value="" data-callback="recalc" />
+        выезд
+        <input class="date inp-date-e" type="text" placeholder="выберите" value="" data-callback="recalc" />
+        <div class="select-list-frame">
+                <div id="left-search-people">
+                    <div class="fl">
+                            взрослые
+                            
+                            <div style="width:39px;" data-cook="adults" data-callback="recalc" class="select-list " data-val="2">
+                                    <span class="select-list-view">2</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div><div data-val="5">5 </div><div data-val="6">6 </div>
+                                    </div>
+                            </div>
+                                                </div>
+                    <div class="fr">
+                            дети
+                            
+                            <div style="width:39px;" data-cook="children" data-callback="recalc, child_view" class="select-list " data-val="0" >
+                                    <span class="select-list-view">0</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="0">0 </div><div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div>
+                                    </div>
+                            </div>
+                                                </div>
+                    <br class="cb" />
+                </div>
+
+                <div class="mt10" id="left-search-child">
+                    <span class="childs-tip">возраст детей</span>
+                        <div class="childs-tip">
+                                
+                            <div style="width:0px;" data-cook="ch1" data-callback="recalc" class="select-list sel-child fl" data-val="8" data-n="1">
+                                    <span class="select-list-view">8</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div><div data-val="5">5 </div><div data-val="6">6 </div><div data-val="7">7 </div><div data-val="8">8 </div><div data-val="9">9 </div><div data-val="10">10 </div><div data-val="11">11 </div><div data-val="12">12 </div><div data-val="13">13 </div><div data-val="14">14 </div><div data-val="15">15 </div><div data-val="16">16 </div><div data-val="17">17 </div><div data-val="18">18 </div>
+                                    </div>
+                            </div>
+                            
+                            <div style="width:0px;" data-cook="ch2" data-callback="recalc" class="select-list sel-child fl" data-val="8" data-n="2">
+                                    <span class="select-list-view">8</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div><div data-val="5">5 </div><div data-val="6">6 </div><div data-val="7">7 </div><div data-val="8">8 </div><div data-val="9">9 </div><div data-val="10">10 </div><div data-val="11">11 </div><div data-val="12">12 </div><div data-val="13">13 </div><div data-val="14">14 </div><div data-val="15">15 </div><div data-val="16">16 </div><div data-val="17">17 </div><div data-val="18">18 </div>
+                                    </div>
+                            </div>
+                            
+                            <div style="width:0px;" data-cook="ch3" data-callback="recalc" class="select-list sel-child fl" data-val="8" data-n="3">
+                                    <span class="select-list-view">8</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div><div data-val="5">5 </div><div data-val="6">6 </div><div data-val="7">7 </div><div data-val="8">8 </div><div data-val="9">9 </div><div data-val="10">10 </div><div data-val="11">11 </div><div data-val="12">12 </div><div data-val="13">13 </div><div data-val="14">14 </div><div data-val="15">15 </div><div data-val="16">16 </div><div data-val="17">17 </div><div data-val="18">18 </div>
+                                    </div>
+                            </div>
+                            
+                            <div style="width:0px;" data-cook="ch4" data-callback="recalc" class="select-list sel-child fl mr0" data-val="8" data-n="4">
+                                    <span class="select-list-view">8</span>
+                                    <span class="select-list-triangle"></span>
+                                    <div class="select-values">
+                                            <div data-val="1">1 </div><div data-val="2">2 </div><div data-val="3">3 </div><div data-val="4">4 </div><div data-val="5">5 </div><div data-val="6">6 </div><div data-val="7">7 </div><div data-val="8">8 </div><div data-val="9">9 </div><div data-val="10">10 </div><div data-val="11">11 </div><div data-val="12">12 </div><div data-val="13">13 </div><div data-val="14">14 </div><div data-val="15">15 </div><div data-val="16">16 </div><div data-val="17">17 </div><div data-val="18">18 </div>
+                                    </div>
+                            </div>
+                                                            <br class="cb" />
+                        </div>
+                </div>
+        </div>
+        <a href="search.html" class="ac-btn" id="left-search-send">Найти</a>    </div>
+</div>    </div>
+    
+    <div class="fr" id="review-right">
+        <div class="hotel-review-rating ">
+                <!--<div class="hotel-review-write"> отеля «Пещера»</div>-->
+            <div class="hotel-review-write-voit">
+                <span>
+                    <div class="hotel-review-write-voit-name">Чистота</div>
+                    <div id="voit-clean" class="hotel-review-write-voit-slider"></div>
+                    <div id="voit-clean-result" class="hotel-review-write-voit-result">4.0</div>
+                    <br class="cl" />
+                </span>
+                <span>
+                    <div class="hotel-review-write-voit-name">Комфорт</div>
+                    <div id="voit-comfort" class="hotel-review-write-voit-slider"></div>
+                    <div id="voit-comfort-result" class="hotel-review-write-voit-result">4.0</div>
+                    <br class="cl" />
+                </span>
+                <span>
+                    <div class="hotel-review-write-voit-name">Расположение</div>
+                    <div id="voit-location" class="hotel-review-write-voit-slider"></div>
+                    <div id="voit-location-result" class="hotel-review-write-voit-result">4.0</div>
+                    <br class="cl" />
+                </span>
+                <span>
+                    <div class="hotel-review-write-voit-name">Сервис</div>
+                    <div id="voit-service" class="hotel-review-write-voit-slider"></div>
+                    <div id="voit-service-result" class="hotel-review-write-voit-result">4.0</div>
+                    <br class="cl" />
+                </span>
+                <span>
+                    <div class="hotel-review-write-voit-name">Качество сна</div>
+                    <div id="voit-sleep" class="hotel-review-write-voit-slider"></div>
+                    <div id="voit-sleep-result" class="hotel-review-write-voit-result">4.0</div>
+                    <br class="cl" />
+                </span>
+                <span>
+                    <div class="hotel-review-write-voit-name">Цена / качество</div>
+                    <div id="voit-ratio" class="hotel-review-write-voit-slider"></div>
+                    <div id="voit-ratio-result" class="hotel-review-write-voit-result">4.0</div>
+                    <br class="cl" />
+                </span>
+                <br class="cl" />
+            </div>
+
+            <div class="hotel-review-write-love">
+                <div class="icon-big-love-4"></div> <b>4.0</b>
+            </div>
+        </div>
+
+        <div class="hotel-review-tit mt40">Заголовок отзыва</div>
+        <input class="hotel-review-input-title" type="text" value="" />
+        <div class="hotel-review-tit mt40">Ваш отзыв</div>
+        <textarea class="hotel-review-input-text" rows="4"></textarea>
+        <div class="hotel-review-tit mt40">Какая это была поездка?</div>
+        <div data-type="" id="hotel-review-type-trip">
+                <div data-type="child" class="hotel-review-type-trip-circle"><span class="hotel-review-icon-grey-child"></span><p>с детьми</p></div>
+            <div data-type="friend" class="hotel-review-type-trip-circle"><span class="hotel-review-icon-grey-friend"></span><p>с друзьями</p></div>
+            <div data-type="love" class="hotel-review-type-trip-circle"><span class="hotel-review-icon-grey-love"></span><p>романтика</p></div>
+            <div data-type="one" class="hotel-review-type-trip-circle"><span class="hotel-review-icon-grey-one"></span><p>один</p></div>
+                <div data-type="business" class="hotel-review-type-trip-circle"><span class="hotel-review-icon-grey-business"></span><p>деловая</p></div>
+            <br class="cl" />
+        </div>
+        
+        
+        <div class="select-list-frame mt80">
+            
+            <div class="hotel-review-tit ">Когда вы отдыхали?</div>
+            <div id="review-write-year" style="width:148px; background: #F5F5F5;" data-cook="" data-callback="" class="select-list fl" data-val="2020" >
+                    <span class="select-list-view">2020</span>
+                    <span class="select-list-triangle"></span>
+                    <div class="select-values">
+                        <div data-val="2010">2010</div><div data-val="2011">2011</div><div data-val="2012">2012</div><div data-val="2013">2013</div><div data-val="2014">2014</div><div data-val="2015">2015</div><div data-val="2016">2016</div><div data-val="2017">2017</div><div data-val="2018">2018</div><div data-val="2019">2019</div><div data-val="2020">2020</div><div data-val="2021">2021</div>                    </div>
+            </div>
+            
+            <div id="review-write-month" style="width:148px; background: #F5F5F5;" data-cook="" data-callback="" class="select-list fl ml20" data-val="7" >
+                    <span class="select-list-view">июль</span>
+                    <span class="select-list-triangle"></span>
+                    <div class="select-values">
+                        <div data-val="1">январь</div><div data-val="2">февраль</div><div data-val="3">март</div><div data-val="4">апрель</div><div data-val="5">май</div><div data-val="6">июнь</div><div data-val="7">июль</div><div data-val="8">август</div><div data-val="9">сентябрь</div><div data-val="10">октябрь</div><div data-val="11">ноябрь</div><div data-val="12">декабрь</div>                    </div>
+            </div>
+            <br class="cl" />
+            
+        </div>
+
+        <div class="hotel-review-tit mt40">Если у Вас есть фотографии, поделитесь :)</div>
+        <div class="hotel-review-photo"><div>Выберите фотографии</div><span>обзор</span></div>
+        <div id="hotel-review-photos"></div>
+        <br class="cl" />
+
+        <div class="hotel-review-tit mt40"></div>
+        <div class="pr" id="uLogin" x-ulogin-params="display=buttons;fields=first_name,last_name,photo,email,photo_big;
+            redirect_uri=share42/xd_custom.html;callback=preview">
+            <div class="icon_fb" x-ulogin-button="facebook"></div>
+            <div class="icon_tweet" x-ulogin-button="twitter"></div>
+            <div class="icon_mail" x-ulogin-button="mailru"></div>
+            <div class="icon_od" x-ulogin-button="odnoklassniki"></div>
+            <div class="icon_google" x-ulogin-button="googleplus"></div>
+            <div class="icon_vk" x-ulogin-button="vkontakte"></div>
+            <span class="ml10" id="blog-social-title"><font size="+1">&larr;</font> авторизуйтесь :)</span>
+            <br class="cl" />
+            <div id="review-photo"></div>
+        </div>
+
+        <div class="hotel-review-tit mt40">Представьтесь, пожалуйста</div>
+        <input class="hotel-review-input-name" type="text" value="" />
+        
+        <div  class="select-list-frame mt40">
+            <div id="review-about" style="width:361px; background: #F5F5F5;" data-cook="" data-callback="" class="select-list" data-val="0" >
+                <span class="select-list-view">Общий отзыв</span>
+                <span class="select-list-triangle"></span>
+                <div class="select-values">
+                    <div data-val="0">Общий отзыв</div><div data-val="4">Эконом  </div><div data-val="1">Стандарт  с общей кроватью </div><div data-val="3">Комфорт с общей кроватью  </div><div data-val="2">Двухкомнатный Люкс </div>                </div>
+            </div>
+        </div>
+        
+        <div id="hotel-review-write-submit">отправить отзыв</div>
+
+        <form id="review-img-form" style="position:absolute; visibility:hidden;" action="https://ravenna-hotel.com.ru/act-hotel-review-photo.php" target="photo_frame" enctype="multipart/form-data" method="post">
+            <input accept="image/jpeg,image/png,image/gif" name="Filedata" type="file" id="photo-review-file" />
+            <input name="id" type="hidden" value="" id="photo-review-img" />
+            <iframe name="photo_frame" id="upload-review-photo"></iframe>
+        </form>
+
+        <input type="hidden" id="review-hotel-social-network" value="">
+        <input type="hidden" id="review-hotel-social-profile" value="">
+        <input type="hidden" id="review-hotel-social-photo1" value="">
+        <input type="hidden" id="review-hotel-social-photo2" value="">
+        <input type="hidden" id="review-hotel-social-uid" value="">
+        <input type="hidden" id="review-hotel-social-identity" value="">
+        <input type="hidden" id="review-hotel-social-email" value="">
+    </div>
+    
+    <br class="cb" />
+</div>
+
+<div class="c-back" id="footer">
+	<div class="center">
+    
+        <div class="fl" id="footer-company">
+            298500,<br />Россия, АР Крым, Алушта,<br />ул. Иванова, 1<br>
+            тел.: +7 (978) 843 12 73<br>
+            e-mail: ravennahotels@gmail.com            <br /><br />
+            
+            &copy; 2021 <br />
+            Сайт + ПО для отеля
+        </div>
+        
+        <div class="fl footer-list" >
+            <div>Номерной фонд</div>
+                
+            <a href="roomdcfd.html?id=4">Эконом </a><a href="room681a.html?id=1">Стандарт  с общей кроватью</a><a href="roomd708.html?id=3">Комфорт с общей кроватью </a><a href="room0b30.html?id=2">Двухкомнатный Люкс</a>        </div>
+        
+        <div class="fl footer-list" >
+        	<div>Последние статьи</div>
+            <a href="article681a.html?id=1"></a><a href="article0b30.html?id=2"></a><a href="articled708.html?id=3"></a><a href="articledcfd.html?id=4"></a><a href="articled61c.html?id=5"></a><a href="article3a9f.html?id=6"></a><a href="article8803.html?id=7"></a>        </div>
+        
+         <br class="cl" />
+
+    </div>
+</div>
+<div id="under">
+    <a target="_blank" href="https://wintega.com/turkey/mediterranean-region-turkey/antalya">Отели Антальи</a> |
+    <a href="index.html">Главная</a> |
+    <a href="rooms.html">Номера</a> |
+    <a href="book.html">Забронировать</a> |
+    <a href="review.html">Отзывы</a> |
+    <a href="contact.html">Контакты</a> |
+    <a href="oferta.html">Оферта и политика конфиденциальности</a>
+</div>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter36677925 = new Ya.Metrika({
+                    id:36677925,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "../mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/36677925" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>
