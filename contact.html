@@ -227,6 +227,20 @@ function init () {
             <div class="contact-title2">Контакты:</div>
             <div class="contact-info"><div class="contact-contact">Отдел бронирования: +7 978 843 1273</div><div class="contact-contact">МТС Россия: +7 978 843 12 73</div><div class="contact-contact">E-mail:  ravennahotels@gmail.com</div><div class="contact-contact">Владелец: +7 978 843 12 73</div><div class="contact-contact">МТС Россия: </div></div>
             
+		<?php
+2
+    $o = array();
+3
+ 
+4
+    $o['force_show_code'] = true;
+5
+    $sape = new SAPE_client($o);
+6
+?>
+
+		
+		
                        
             <div class="contact-title2">На карте:</div>
             <div id="YMapsID" style="height: 500px; width: 100%; "></div>
